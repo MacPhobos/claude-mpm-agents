@@ -2,54 +2,72 @@
 
 A curated collection of specialized AI agent templates for [Claude MPM](https://github.com/bobmatnyc/claude-mpm) - the multi-agent orchestration framework for Claude Code.
 
+**Key Features:**
+- 🏗️ **BASE-AGENT.md Inheritance System** - Convention-based template inheritance eliminates duplication
+- 📦 **Hierarchical Organization** - Agents organized by functional relationships (engineer, qa, ops, etc.)
+- 🤖 **Auto-Deployment** - Intelligent agent selection based on project type detection
+- 🔍 **Agent Discovery** - Cache scanning with semantic matching for recommendations
+- ⚡ **57% Less Duplication** - Shared instructions managed in one place
+
 ## Overview
 
 This repository contains production-ready agent templates in Markdown format with YAML frontmatter. Each agent is designed for specific engineering, operations, or quality assurance tasks within the Claude MPM framework.
 
-The repository uses a **hierarchical organization with BASE-AGENT.md inheritance** to eliminate duplication and maintain consistency across related agents.
+The repository uses a **hierarchical organization with BASE-AGENT.md inheritance** to eliminate duplication and maintain consistency across related agents. When building an agent, content from BASE-AGENT.md files at each directory level is automatically combined, allowing shared instructions to be defined once and inherited by all agents in that category.
 
 ## Repository Structure
 
 ```
-agents/
-├── BASE-AGENT.md                    # Universal instructions (all agents)
-├── claude-mpm/                      # Claude MPM framework agents
-│   ├── BASE-AGENT.md               # MPM framework awareness
-│   └── mpm-agent-manager.md        # Agent discovery & deployment
-├── universal/                       # Cross-cutting concerns
-│   ├── memory-manager.md
-│   ├── research.md
-│   └── ...
-├── engineer/                        # Implementation specialists
-│   ├── BASE-AGENT.md               # Shared engineering instructions
-│   ├── core/
-│   │   └── engineer.md
-│   ├── frontend/
-│   │   ├── react-engineer.md
-│   │   ├── nextjs-engineer.md
+claude-mpm-agents/
+├── agents/                          # Deployable agent templates
+│   ├── BASE-AGENT.md               # Universal instructions (ALL agents inherit)
+│   │
+│   ├── claude-mpm/                 # Claude MPM framework agents
+│   │   ├── BASE-AGENT.md          # MPM framework awareness
+│   │   └── mpm-agent-manager.md   # Agent discovery & deployment
+│   │
+│   ├── universal/                  # Cross-cutting concerns
+│   │   ├── memory-manager.md
+│   │   ├── research.md
 │   │   └── ...
-│   ├── backend/
-│   │   ├── python-engineer.md
-│   │   ├── golang-engineer.md
+│   │
+│   ├── engineer/                   # Implementation specialists
+│   │   ├── BASE-AGENT.md          # Shared engineering principles
+│   │   ├── core/
+│   │   │   └── engineer.md
+│   │   ├── frontend/
+│   │   │   ├── react-engineer.md
+│   │   │   ├── nextjs-engineer.md
+│   │   │   └── ...
+│   │   ├── backend/
+│   │   │   ├── python-engineer.md
+│   │   │   ├── golang-engineer.md
+│   │   │   └── ...
 │   │   └── ...
+│   │
+│   ├── qa/                         # Quality assurance
+│   │   ├── BASE-AGENT.md          # Shared QA standards
+│   │   ├── qa.md
+│   │   ├── api-qa.md
+│   │   └── web-qa.md
+│   │
+│   └── ops/                        # Operations & deployment
+│       ├── BASE-AGENT.md          # Shared ops protocols
+│       ├── core/
+│       │   └── ops.md
+│       ├── platform/
+│       │   ├── vercel-ops.md
+│       │   └── ...
+│       └── ...
+│
+├── templates/                       # Reference materials (NOT agents)
+│   ├── circuit-breakers.md        # PM violation patterns
+│   ├── pm-examples.md             # PM behavior examples
+│   ├── validation-templates.md    # Verification templates
 │   └── ...
-├── qa/                              # Quality assurance
-│   ├── BASE-AGENT.md               # Shared QA instructions
-│   ├── qa.md
-│   ├── api-qa.md
-│   └── web-qa.md
-├── ops/                             # Operations & deployment
-│   ├── BASE-AGENT.md               # Shared ops instructions
-│   ├── core/
-│   │   └── ops.md
-│   ├── platform/
-│   │   ├── vercel-ops.md
-│   │   └── ...
-│   └── ...
-└── templates/                       # Shared reference materials
-    ├── circuit-breakers.md
-    ├── pm-examples.md
-    └── ...
+│
+├── build-agent.py                   # Build script for flattening agents
+└── AUTO-DEPLOY-INDEX.md            # Project type detection rules
 ```
 
 ## BASE-AGENT.md Inheritance System
