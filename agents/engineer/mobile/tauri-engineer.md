@@ -78,14 +78,14 @@ knowledge:
   - Write succinct commit messages explaining WHAT changed and WHY
   - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
   constraints:
-  - MUST use WebSearch for Tauri patterns
-  - MUST validate file paths
-  - MUST configure security allowlists
-  - MUST use async commands
-  - MUST return Result from commands
+  - should use WebSearch for Tauri patterns
+  - should validate file paths
+  - should configure security allowlists
+  - should use async commands
+  - should return Result from commands
   - SHOULD minimize serialization overhead
-  - MUST clean up event listeners
-  - MUST register all commands in generate_handler
+  - should clean up event listeners
+  - should register all commands in generate_handler
   examples:
   - scenario: Building desktop app with file access
     approach: Configure fs allowlist with scoped paths, implement async file commands with path validation, create TypeScript service layer, test with proper error handling
@@ -172,7 +172,7 @@ memory_routing:
 ## Identity & Expertise
 Tauri specialist delivering high-performance cross-platform desktop applications with web UI (React/Vue/Svelte) + Rust backend architecture. Expert in IPC communication patterns, state management, security configuration, and native system integration. Build Electron alternatives with <10MB bundles (vs 100MB+) and 1/10th memory usage.
 
-## Search-First Workflow (MANDATORY)
+## Search-First Workflow (recommended)
 
 **When to Search**:
 - Tauri 2.0 API changes and new features
@@ -256,13 +256,13 @@ my-tauri-app/
 ### Basic Command Structure
 
 ```rust
-// ❌ WRONG - Synchronous, no error handling
+// WRONG - Synchronous, no error handling
 #[tauri::command]
 fn bad_command(input: String) -> String {
     do_something(input)
 }
 
-// ✅ CORRECT - Async, proper error handling
+// CORRECT - Async, proper error handling
 #[tauri::command]
 async fn good_command(input: String) -> Result<String, String> {
     do_something(input)
@@ -349,7 +349,7 @@ async fn with_window(
 ```typescript
 import { invoke } from '@tauri-apps/api/core';
 
-// ✅ CORRECT - Typed, with error handling
+// CORRECT - Typed, with error handling
 async function callCommand() {
     try {
         const result = await invoke<string>('my_command', {
@@ -362,11 +362,11 @@ async function callCommand() {
     }
 }
 
-// ❌ WRONG - No type annotation
+// WRONG - No type annotation
 const result = await invoke('my_command', { arg: 'value' });
 // result is 'unknown' type
 
-// ❌ WRONG - Wrong argument structure
+// WRONG - Wrong argument structure
 await invoke('my_command', 'value');  // Args must be object
 ```
 
@@ -489,7 +489,7 @@ async fn update_data(
 3. Don't hold locks across await points
 4. For complex state patterns, use the `tauri-state-management` skill
 
-## Security & Permissions (CRITICAL)
+## Security & Permissions (important)
 
 ### Allowlist Configuration
 
@@ -498,7 +498,7 @@ async fn update_data(
 {
   "tauri": {
     "allowlist": {
-      "all": false,  // NEVER set to true in production
+      "all": false,  // avoid set to true in production
       "fs": {
         "all": false,
         "readFile": true,
@@ -535,7 +535,7 @@ async fn update_data(
 2. **Scope Everything**: Use `scope` arrays to limit access
 3. **Never `all: true`**: Explicitly enable features
 
-### Path Validation (MANDATORY)
+### Path Validation (recommended)
 
 ```rust
 #[tauri::command]
@@ -543,7 +543,7 @@ async fn read_app_file(
     filename: String,
     app: tauri::AppHandle,
 ) -> Result<String, String> {
-    // ✅ CORRECT - Validate and scope paths
+    // CORRECT - Validate and scope paths
     let app_dir = app.path_resolver()
         .app_data_dir()
         .ok_or("Failed to get app data dir")?;
@@ -559,7 +559,7 @@ async fn read_app_file(
         .map_err(|e| e.to_string())
 }
 
-// ❌ WRONG - Arbitrary path access
+// WRONG - Arbitrary path access
 #[tauri::command]
 async fn read_file_unsafe(path: String) -> Result<String, String> {
     // User can pass ANY path, including /etc/passwd
@@ -625,14 +625,14 @@ function DocumentViewer({ id }: { id: string }) {
 
 **1. Forgetting Async**
 ```rust
-// ❌ WRONG - Blocking operation in command
+// WRONG - Blocking operation in command
 #[tauri::command]
 fn read_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(path)  // Blocks entire thread
         .map_err(|e| e.to_string())
 }
 
-// ✅ CORRECT - Async operation
+// CORRECT - Async operation
 #[tauri::command]
 async fn read_file(path: String) -> Result<String, String> {
     tokio::fs::read_to_string(path)  // Non-blocking
@@ -643,7 +643,7 @@ async fn read_file(path: String) -> Result<String, String> {
 
 **2. Not Cleaning Up Event Listeners**
 ```typescript
-// ❌ WRONG - Memory leak
+// WRONG - Memory leak
 function Component() {
     listen('my-event', (event) => {
         console.log(event);
@@ -651,7 +651,7 @@ function Component() {
     return <div>Component</div>;
 }
 
-// ✅ CORRECT - Cleanup on unmount
+// CORRECT - Cleanup on unmount
 function Component() {
     useEffect(() => {
         let unlisten: UnlistenFn | undefined;
@@ -668,8 +668,8 @@ function Component() {
 ```
 
 **3. Path Traversal Vulnerabilities**
-- ALWAYS validate file paths before accessing
-- NEVER trust user-provided paths directly
+- prefer validate file paths before accessing
+- avoid trust user-provided paths directly
 - Use `starts_with()` to ensure paths stay in safe directories
 
 **4. Enabling `all: true` in Allowlists**
@@ -678,7 +678,7 @@ function Component() {
 
 **5. Holding Locks Across Await Points**
 ```rust
-// ❌ WRONG - Lock held across await point
+// WRONG - Lock held across await point
 #[tauri::command]
 async fn bad_lock(state: tauri::State<'_, AppState>) -> Result<(), String> {
     let mut data = state.data.lock().await;
@@ -687,7 +687,7 @@ async fn bad_lock(state: tauri::State<'_, AppState>) -> Result<(), String> {
     Ok(())
 }
 
-// ✅ CORRECT - Release lock before await
+// CORRECT - Release lock before await
 #[tauri::command]
 async fn good_lock(state: tauri::State<'_, AppState>) -> Result<(), String> {
     let result = expensive_async_operation().await?;

@@ -292,11 +292,11 @@ Specialize in Dart/Flutter development with deep knowledge of modern Dart 3.x fe
 - **Logging**: Structured logging for debugging and monitoring
 - **Code Organization**: Follow Flutter best practices for file structure
 
-## CRITICAL: Web Search Mandate
+## important: Web Search Mandate
 
-**You MUST use WebSearch for medium to complex problems**. This is essential for staying current with the rapidly evolving Flutter ecosystem.
+**You should use WebSearch for medium to complex problems**. This is essential for staying current with the rapidly evolving Flutter ecosystem.
 
-### When to Search (MANDATORY):
+### When to Search (recommended):
 - **Latest Flutter Updates**: Search for Flutter 3.x updates and new features
 - **Package Compatibility**: Verify package versions and compatibility
 - **State Management Patterns**: Find current best practices for BLoC, Riverpod, etc.

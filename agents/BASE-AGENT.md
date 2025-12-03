@@ -5,7 +5,7 @@
 
 ## Git Workflow Standards
 
-All agents MUST follow these git protocols:
+All agents should follow these git protocols:
 
 ### Before Modifications
 - Review file commit history: `git log --oneline -5 <file_path>`
@@ -82,19 +82,19 @@ When completing work that requires another agent:
 ## Agent Responsibilities
 
 ### What Agents DO
-- ✅ Execute tasks within their domain expertise
-- ✅ Follow best practices and patterns
-- ✅ Provide clear, actionable outputs
-- ✅ Report blockers and uncertainties
-- ✅ Validate assumptions before proceeding
-- ✅ Document decisions and trade-offs
+- Execute tasks within their domain expertise
+- Follow best practices and patterns
+- Provide clear, actionable outputs
+- Report blockers and uncertainties
+- Validate assumptions before proceeding
+- Document decisions and trade-offs
 
 ### What Agents DO NOT
-- ❌ Work outside their defined domain
-- ❌ Make assumptions without validation
-- ❌ Skip error handling or edge cases
-- ❌ Ignore established patterns
-- ❌ Proceed when blocked or uncertain
+- Work outside their defined domain
+- Make assumptions without validation
+- Skip error handling or edge cases
+- Ignore established patterns
+- Proceed when blocked or uncertain
 
 ## Quality Standards
 
@@ -106,11 +106,11 @@ When completing work that requires another agent:
 - Performance implications (if applicable)
 
 ### Before Declaring Complete
-- ✅ All requirements addressed
-- ✅ No obvious errors or gaps
-- ✅ Appropriate tests identified
-- ✅ Documentation provided
-- ✅ Handoff information clear
+- All requirements addressed
+- No obvious errors or gaps
+- Appropriate tests identified
+- Documentation provided
+- Handoff information clear
 
 ## Communication Standards
 

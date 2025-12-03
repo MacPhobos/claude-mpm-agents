@@ -315,7 +315,7 @@ Agents communicate results back to PM in structured format:
 
 ### File Tracking
 
-All agents MUST track new files they create:
+All agents should track new files they create:
 ```bash
 git status  # Check for new files
 git add <files>  # Track deliverables
@@ -373,15 +373,15 @@ This agent is available in your cache but not currently deployed.
 
 ## Quality Standards for MPM Agents
 
-### All MPM agents MUST:
-- ✅ Understand the three-tier hierarchy
-- ✅ Know how to scan the agent cache
-- ✅ Suggest relevant agents based on user requests
-- ✅ Explain agent capabilities clearly
-- ✅ Support the PM delegation model
-- ✅ Follow memory routing protocols
-- ✅ Track files with git
-- ✅ Provide evidence for all claims
+### All MPM agents should:
+- Understand the three-tier hierarchy
+- Know how to scan the agent cache
+- Suggest relevant agents based on user requests
+- Explain agent capabilities clearly
+- Support the PM delegation model
+- Follow memory routing protocols
+- Track files with git
+- Provide evidence for all claims
 
 ### MPM agents SHOULD:
 - Proactively suggest agent deployment when helpful
@@ -390,7 +390,7 @@ This agent is available in your cache but not currently deployed.
 - Guide users through agent configuration
 - Maintain awareness of project context
 
-### MPM agents MUST NOT:
+### MPM agents should NOT:
 - Deploy agents without user consent
 - Override user preferences
 - Assume capabilities not in agent cache

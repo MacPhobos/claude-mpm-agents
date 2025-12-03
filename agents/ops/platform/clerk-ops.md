@@ -258,13 +258,13 @@ NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL=/dashboard
 
 ### Next.js Integration Patterns
 
-**CRITICAL: ClerkProvider Configuration Requirements**:
+**important: ClerkProvider Configuration Requirements**:
 
-⚠️ **Essential Configuration Insight**: The ClerkProvider must be at the root level and cannot be dynamically imported - it needs to wrap the entire app before any hooks are used. This is a common pitfall that causes authentication hooks to fail silently.
+**Essential Configuration Insight**: The ClerkProvider must be at the root level and cannot be dynamically imported - it needs to wrap the entire app before any hooks are used. This is a common pitfall that causes authentication hooks to fail silently.
 
 **Correct Implementation Pattern**:
 ```typescript
-// app/layout.tsx or _app.tsx - MUST be at root level
+// app/layout.tsx or _app.tsx - should be at root level
 import { ClerkProvider } from '@clerk/nextjs'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -279,11 +279,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 **Common Mistakes to Avoid**:
-- ❌ Never dynamically import ClerkProvider
-- ❌ Don't conditionally render ClerkProvider based on feature flags
-- ❌ Avoid wrapping only parts of your app with ClerkProvider
-- ✅ Always place ClerkProvider at the root level
-- ✅ The solution properly handles both auth-enabled and auth-disabled modes while supporting internationalization
+- Never dynamically import ClerkProvider
+- Don't conditionally render ClerkProvider based on feature flags
+- Avoid wrapping only parts of your app with ClerkProvider
+- Always place ClerkProvider at the root level
+- The solution properly handles both auth-enabled and auth-disabled modes while supporting internationalization
 
 **Supporting Both Auth Modes with i18n**:
 ```typescript
@@ -450,11 +450,11 @@ Always include:
 ### TodoWrite Patterns
 
 **Required Format**:
-✅ `[Clerk Ops] Configure dynamic port authentication for Next.js app`
-✅ `[Clerk Ops] Set up webhook endpoints with ngrok tunnel`
-✅ `[Clerk Ops] Troubleshoot infinite redirect loop in production`
-✅ `[Clerk Ops] Implement OAuth providers for social login`
-❌ Never use generic todos
+`[Clerk Ops] Configure dynamic port authentication for Next.js app`
+`[Clerk Ops] Set up webhook endpoints with ngrok tunnel`
+`[Clerk Ops] Troubleshoot infinite redirect loop in production`
+`[Clerk Ops] Implement OAuth providers for social login`
+Never use generic todos
 
 ### Task Categories
 - **Setup**: Initial Clerk configuration and environment setup

@@ -528,26 +528,26 @@ This enables **dynamic agent deployment** based on actual user needs rather than
 
 ## Quality Standards
 
-### Agent Recommendations MUST:
-- ✅ Be based on actual agent metadata (not guesses)
-- ✅ Explain WHY agent is relevant
-- ✅ Provide deployment status
-- ✅ Offer user choice (not force deployment)
-- ✅ Handle "no agent found" gracefully
+### Agent Recommendations should:
+- Be based on actual agent metadata (not guesses)
+- Explain WHY agent is relevant
+- Provide deployment status
+- Offer user choice (not force deployment)
+- Handle "no agent found" gracefully
 
-### Agent Deployment MUST:
-- ✅ Validate agent structure before deploying
-- ✅ Check dependencies are met
-- ✅ Update project configuration
-- ✅ Confirm deployment success
-- ✅ Make agent immediately available to PM
+### Agent Deployment should:
+- Validate agent structure before deploying
+- Check dependencies are met
+- Update project configuration
+- Confirm deployment success
+- Make agent immediately available to PM
 
-### Agent Cache Scanning MUST:
-- ✅ Parse all agents in cache
-- ✅ Maintain accurate index
-- ✅ Update index when cache changes
-- ✅ Handle parsing errors gracefully
-- ✅ Track deployed vs. available agents
+### Agent Cache Scanning should:
+- Parse all agents in cache
+- Maintain accurate index
+- Update index when cache changes
+- Handle parsing errors gracefully
+- Track deployed vs. available agents
 
 ## Success Metrics
 

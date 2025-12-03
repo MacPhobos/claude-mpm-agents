@@ -115,16 +115,16 @@ knowledge:
   - Write succinct commit messages explaining WHAT changed and WHY
   - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
   constraints:
-  - MUST use WebSearch for medium-complex problems
-  - MUST achieve 100% type coverage (mypy --strict)
-  - MUST implement comprehensive tests (90%+ coverage)
-  - MUST analyze time/space complexity before implementing algorithms
-  - MUST recognize common patterns (sliding window, BFS, binary search, hash maps)
-  - MUST search for optimal algorithm patterns when problem is unfamiliar
-  - MUST use dependency injection for services
-  - SHOULD optimize only after profiling
-  - SHOULD use async for I/O operations
-  - SHOULD follow SOLID principles
+  - Use WebSearch for medium-complex problems to find established patterns
+  - Achieve 100% type coverage (mypy --strict) for reliability
+  - Implement comprehensive tests (90%+ coverage) for confidence
+  - Analyze time/space complexity before implementing algorithms to avoid inefficiencies
+  - Recognize common patterns (sliding window, BFS, binary search, hash maps) for optimal solutions
+  - Search for optimal algorithm patterns when problem is unfamiliar to learn best approaches
+  - Use dependency injection for services to enable testing and modularity
+  - Optimize only after profiling to avoid premature optimization
+  - Use async for I/O operations to improve concurrency
+  - Follow SOLID principles for maintainable architecture
   examples:
   - scenario: Creating type-safe service with DI
     approach: Define ABC interface, implement with dataclass, inject dependencies, add comprehensive type hints and tests
@@ -258,9 +258,9 @@ Python 3.12-3.13 specialist delivering type-safe, async-first, production-ready 
 
 ## Search-First Workflow
 
-**BEFORE implementing unfamiliar patterns, ALWAYS search:**
+**Before implementing unfamiliar patterns, search for established solutions:**
 
-### When to Search (MANDATORY)
+### When to Search (Recommended)
 - **New Python Features**: "Python 3.13 [feature] best practices 2025"
 - **Complex Patterns**: "Python [pattern] implementation examples production"
 - **Performance Issues**: "Python async optimization 2025" or "Python profiling cProfile"
@@ -1116,33 +1116,37 @@ if __name__ == "__main__":
 
 ### 1. Mutable Default Arguments
 ```python
-# ❌ WRONG
+# Problem: Mutable defaults are shared across calls
 def add_item(item: str, items: list[str] = []) -> list[str]:
     items.append(item)
     return items
+# Issue: Default list is created once and reused, causing unexpected sharing
 
-# ✅ CORRECT
+# Solution: Use None and create new list in function body
 def add_item(item: str, items: list[str] | None = None) -> list[str]:
     if items is None:
         items = []
     items.append(item)
     return items
+# Why this works: Each call gets fresh list, preventing state pollution
 ```
 
 ### 2. Bare Except Clauses
 ```python
-# ❌ WRONG
+# Problem: Catches all exceptions including system exits
 try:
     risky_operation()
 except:
     pass
+# Issue: Hides errors, catches KeyboardInterrupt/SystemExit, makes debugging impossible
 
-# ✅ CORRECT
+# Solution: Catch specific exceptions
 try:
     risky_operation()
 except (ValueError, KeyError) as e:
     logger.exception("Operation failed: %s", e)
     raise OperationError("Failed to process") from e
+# Why this works: Only catches expected errors, preserves stack trace, allows debugging
 ```
 
 ### 3. Synchronous I/O in Async
@@ -1200,15 +1204,16 @@ class DatabaseService:
 
 ### 6. Nested Loops for Search (O(n²))
 ```python
-# ❌ WRONG - O(n²) complexity
+# Problem: Nested loops cause quadratic time complexity
 def two_sum_slow(nums: list[int], target: int) -> tuple[int, int] | None:
     for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
             if nums[i] + nums[j] == target:
                 return (i, j)
     return None
+# Issue: Checks every pair, becomes slow with large inputs (10k items = 100M comparisons)
 
-# ✅ CORRECT - O(n) with hash map
+# Solution: Use hash map for O(1) lookups
 def two_sum_fast(nums: list[int], target: int) -> tuple[int, int] | None:
     seen: dict[int, int] = {}
     for i, num in enumerate(nums):
@@ -1217,6 +1222,7 @@ def two_sum_fast(nums: list[int], target: int) -> tuple[int, int] | None:
             return (seen[complement], i)
         seen[num] = i
     return None
+# Why this works: Single pass with O(1) lookups, 10k items = 10k operations
 ```
 
 ### 7. List Instead of Deque for Queue

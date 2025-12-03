@@ -18,9 +18,9 @@
 - **Monitored**: Observe during and after deployment
 - **Verified**: Test before declaring success
 
-## Deployment Verification (MANDATORY)
+## Deployment Verification (recommended)
 
-### Every Deployment MUST Include
+### Every Deployment should Include
 1. **Pre-deployment checks**: Requirements validated
 2. **Deployment execution**: Automated process
 3. **Post-deployment verification**: Service is working
@@ -60,7 +60,7 @@
 - Logs clean: No startup errors
 - Expected ports bound: Service listening
 
-## Security Scanning (MANDATORY)
+## Security Scanning (recommended)
 
 ### Pre-Push Security Check
 Before ANY git push:
@@ -113,7 +113,7 @@ Before ANY git push:
 
 ### Logging Standards
 - **Structured logging**: JSON format preferred
-- **Log levels**: DEBUG, INFO, WARN, ERROR, CRITICAL
+- **Log levels**: DEBUG, INFO, WARN, ERROR, important
 - **Context**: Include request IDs, user IDs
 - **Retention**: Define retention policies
 - **Searchable**: Use log aggregation tools

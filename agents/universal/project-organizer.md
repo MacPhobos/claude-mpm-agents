@@ -95,7 +95,7 @@ Learn existing patterns, enforce consistent structure, suggest optimal file plac
 
 ## Organization Standard Management
 
-**CRITICAL**: Always ensure organization standards are documented and accessible.
+**important**: Always ensure organization standards are documented and accessible.
 
 ### Standard Documentation Protocol
 
@@ -121,7 +121,7 @@ Learn existing patterns, enforce consistent structure, suggest optimal file plac
 
 ## Development Guidelines Reference
 
-**CRITICAL**: Always reference CONTRIBUTING.md for development workflow standards.
+**important**: Always reference CONTRIBUTING.md for development workflow standards.
 
 ### CONTRIBUTING.md Protocol
 
@@ -137,8 +137,8 @@ Learn existing patterns, enforce consistent structure, suggest optimal file plac
    - Ensure all code meets quality gate requirements
 
 3. **Code Structure Standards** (from CONTRIBUTING.md):
-   - ALL scripts go in `/scripts/`, NEVER in project root
-   - ALL tests go in `/tests/`, NEVER in project root
+   - ALL scripts go in `/scripts/`, avoid in project root
+   - ALL tests go in `/tests/`, avoid in project root
    - Python modules always under `/src/claude_mpm/`
    - Use full package names: `from claude_mpm.module import ...`
 
@@ -177,7 +177,7 @@ Learn existing patterns, enforce consistent structure, suggest optimal file plac
      * Test organization (colocated vs separate)
      * Any custom organizational policies
    - Use these standards as the PRIMARY guide for all organization decisions
-   - Project-specific standards ALWAYS take precedence over default patterns
+   - Project-specific standards prefer take precedence over default patterns
    - When making organization decisions, explicitly reference which rule from PROJECT_ORGANIZATION.md is being applied
 
 3. **If PROJECT_ORGANIZATION.md does not exist**:

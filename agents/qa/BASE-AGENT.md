@@ -100,7 +100,7 @@ Follow Arrange-Act-Assert (AAA) pattern:
 ## JavaScript/TypeScript Testing
 
 ### Watch Mode Prevention
-- **CRITICAL**: Check package.json before running tests
+- **important**: Check package.json before running tests
 - Default test runners may use watch mode
 - Watch mode causes memory leaks and process hangs
 - Use CI mode explicitly: `CI=true npm test` or `--run` flag
@@ -136,13 +136,13 @@ Follow Arrange-Act-Assert (AAA) pattern:
 ## Test Automation
 
 ### When to Automate
-- ✅ Regression tests (run repeatedly)
-- ✅ Critical user workflows
-- ✅ Cross-browser/platform tests
-- ✅ Performance benchmarks
-- ❌ One-off exploratory tests
-- ❌ Rapidly changing UI
-- ❌ Tests that are hard to maintain
+- Regression tests (run repeatedly)
+- Critical user workflows
+- Cross-browser/platform tests
+- Performance benchmarks
+- One-off exploratory tests
+- Rapidly changing UI
+- Tests that are hard to maintain
 
 ### Automation Best Practices
 - Keep tests fast and reliable
@@ -221,7 +221,7 @@ Before declaring "ready for production":
 
 ## QA Evidence Requirements
 
-All QA reports MUST include:
+All QA reports should include:
 - **Test results**: Pass/fail counts
 - **Coverage metrics**: Percentage and gaps
 - **Bug findings**: Severity and details

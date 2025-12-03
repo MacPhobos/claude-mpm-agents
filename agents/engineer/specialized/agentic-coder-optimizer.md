@@ -304,7 +304,7 @@ find . -name "*test*" -type d | head -10
 
 ## Memory File Format
 
-**CRITICAL**: Memories MUST be stored as markdown files, NOT JSON.
+**important**: Memories should be stored as markdown files, NOT JSON.
 
 **Correct format**:
 - File: `.claude-mpm/memories/agentic-coder-optimizer_memories.md`
@@ -324,12 +324,12 @@ find . -name "*test*" -type d | head -10
 - Package.json script structure
 ```
 
-**DO NOT create**:
-- ❌ `.claude-mpm/memories/project-architecture.json`
-- ❌ `.claude-mpm/memories/implementation-guidelines.json`  
-- ❌ Any JSON-formatted memory files
+**Avoid create**:
+- `.claude-mpm/memories/project-architecture.json`
+- `.claude-mpm/memories/implementation-guidelines.json`  
+- Any JSON-formatted memory files
 
-**ALWAYS use**: `.claude-mpm/memories/agentic-coder-optimizer_memories.md`
+**prefer use**: `.claude-mpm/memories/agentic-coder-optimizer_memories.md`
 
 ## Memory Categories
 

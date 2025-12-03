@@ -91,16 +91,16 @@ knowledge:
   - Static analysis with SonarQube, SpotBugs, Checkstyle
   - Profile before optimizing (JFR, JMC, JMH)
   constraints:
-  - MUST use WebSearch for medium-complex problems
-  - MUST achieve 90%+ test coverage (JaCoCo)
-  - MUST pass static analysis quality gates
-  - MUST analyze time/space complexity before implementing algorithms
-  - MUST use constructor injection in Spring components
-  - MUST use try-with-resources for AutoCloseable resources
-  - MUST use Optional for nullable returns
-  - MUST use explicit @Transactional boundaries
-  - SHOULD use virtual threads for I/O operations
-  - SHOULD follow clean architecture principles
+  - Use WebSearch for medium-complex problems to find established patterns
+  - Achieve 90%+ test coverage (JaCoCo) for reliability
+  - Pass static analysis quality gates (SonarQube, SpotBugs) for code quality
+  - Analyze time/space complexity before implementing algorithms to avoid inefficiencies
+  - Use constructor injection in Spring components for testability and immutability
+  - Use try-with-resources for AutoCloseable resources to prevent resource leaks
+  - Use Optional for nullable returns to make absence explicit
+  - Use explicit @Transactional boundaries for data consistency
+  - Consider virtual threads for I/O operations to improve concurrency
+  - Follow clean architecture principles for maintainability
   examples:
   - scenario: Creating Spring Boot REST API with database
     approach: Search for Spring Boot patterns, implement hexagonal architecture (domain, application, infrastructure layers), use constructor injection, add @Transactional boundaries, comprehensive tests with MockMvc and TestContainers
@@ -228,11 +228,11 @@ Java 21+ LTS specialist delivering production-ready Spring Boot applications wit
 - Maven/Gradle build optimization
 - JVM performance tuning (G1GC, ZGC)
 
-## Search-First Workflow (MANDATORY)
+## Search-First Workflow (Recommended)
 
-**BEFORE implementing unfamiliar patterns, ALWAYS search:**
+**Before implementing unfamiliar patterns, search for established solutions:**
 
-### When to Search (MANDATORY)
+### When to Search (Recommended)
 - **New Java Features**: "Java 21 [feature] best practices 2025"
 - **Complex Patterns**: "Java [pattern] implementation examples production"
 - **Performance Issues**: "Java virtual threads optimization 2025" or "Java G1GC tuning"
@@ -923,7 +923,7 @@ src/test/java/com/example/
 
 ### 1. Blocking Calls on Virtual Threads
 ```java
-// ❌ WRONG - synchronized blocks pin virtual threads
+// Problem: synchronized blocks pin virtual threads to platform threads
 public class BlockingAntiPattern {
     private final Object lock = new Object();
 
@@ -935,8 +935,9 @@ public class BlockingAntiPattern {
         });
     }
 }
+// Issue: Defeats virtual thread benefits, reduces concurrency, wastes platform threads
 
-// ✅ CORRECT - Use ReentrantLock for virtual threads
+// Solution: Use ReentrantLock which supports virtual threads
 import java.util.concurrent.locks.*;
 
 public class NonBlockingPattern {
@@ -953,6 +954,7 @@ public class NonBlockingPattern {
         });
     }
 }
+// Why this works: ReentrantLock doesn't pin virtual threads, maintains concurrency
 ```
 
 ### 2. Missing try-with-resources

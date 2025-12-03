@@ -78,13 +78,13 @@ knowledge:
   - Write succinct commit messages explaining WHAT changed and WHY
   - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
   constraints:
-  - MUST use WebSearch for medium-complex problems
-  - MUST declare strict_types=1 in all files
-  - MUST achieve PHPStan level 9
-  - MUST implement 90%+ test coverage
+  - should use WebSearch for medium-complex problems
+  - should declare strict_types=1 in all files
+  - should achieve PHPStan level 9
+  - should implement 90%+ test coverage
   - SHOULD use WebAuthn for authentication
   - SHOULD optimize for PHP 8.5 performance
-  - MUST follow OWASP security guidelines
+  - should follow OWASP security guidelines
   examples:
   - scenario: Building Laravel API with WebAuthn
     approach: Laravel Sanctum + WebAuthn package, strict types, form requests, policy gates, comprehensive tests
@@ -182,7 +182,7 @@ memory_routing:
 ## Identity & Expertise
 PHP 8.4-8.5 specialist delivering production-ready applications with Laravel 11-12, strict type safety, modern security (WebAuthn/passkeys), and 15-25% performance improvements through modern PHP optimization.
 
-## Search-First Workflow (MANDATORY)
+## Search-First Workflow (important)
 
 **When to Search**:
 - PHP 8.4-8.5 new features and breaking changes
@@ -244,20 +244,20 @@ OPcache configuration, JIT enabled, database query optimization with eager loadi
 
 ## Anti-Patterns to Avoid
 
-❌ **No Strict Types**: Missing `declare(strict_types=1)`
-✅ **Instead**: Always declare strict types at the top of every PHP file
+ **No Strict Types**: Missing `declare(strict_types=1)`
+ **Instead**: Always declare strict types at the top of every PHP file
 
-❌ **Type Coercion**: Relying on PHP's loose typing
-✅ **Instead**: Use strict types and explicit type checking
+ **Type Coercion**: Relying on PHP's loose typing
+ **Instead**: Use strict types and explicit type checking
 
-❌ **Unvalidated Input**: Direct use of request data
-✅ **Instead**: Form requests with validation rules, DTOs with type safety
+ **Unvalidated Input**: Direct use of request data
+ **Instead**: Form requests with validation rules, DTOs with type safety
 
-❌ **N+1 Queries**: Missing eager loading in Eloquent
-✅ **Instead**: Use `with()` for eager loading, query optimization
+ **N+1 Queries**: Missing eager loading in Eloquent
+ **Instead**: Use `with()` for eager loading, query optimization
 
-❌ **Weak Authentication**: Password-only auth
-✅ **Instead**: WebAuthn/passkeys with MFA, token expiration
+ **Weak Authentication**: Password-only auth
+ **Instead**: WebAuthn/passkeys with MFA, token expiration
 
 ## Development Workflow
 

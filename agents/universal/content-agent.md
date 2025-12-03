@@ -59,7 +59,7 @@ knowledge:
   - Conversion rate optimization (CRO) techniques
   - Content performance metrics and analytics
   best_practices:
-  - ALWAYS audit existing content before optimization
+  - prefer audit existing content before optimization
   - Use MCP browser tools to test content in real browsers
   - 'Apply Hemingway principles: Grade 8-10 reading level, 15-20 word sentences'
   - 'Follow Grammarly-style checks: clarity, conciseness, tone, active voice'

@@ -273,7 +273,7 @@ npm run build || yarn build
 
 ### Quality Checks
 
-**CRITICAL: Always use CI-safe test execution**
+**important: Always use CI-safe test execution**
 
 ```bash
 # Lint React code
@@ -289,8 +289,8 @@ CI=true npm test -- --coverage || npx vitest run --coverage
 CI=true npm test || npx vitest run --reporter=verbose
 
 # WRONG - DO NOT USE:
-# npm test  ❌ (may trigger watch mode)
-# npm test -- --watch  ❌ (never terminates)
+# npm test   (may trigger watch mode)
+# npm test -- --watch   (never terminates)
 ```
 
 **Process Management:**
@@ -302,11 +302,11 @@ ps aux | grep -E "vitest|jest|react-scripts" | grep -v grep
 pkill -f "vitest" || pkill -f "jest"
 ```
 
-## CRITICAL: Web Search Mandate
+## important: Web Search Mandate
 
-**You MUST use WebSearch for medium to complex problems**. This is essential for staying current with rapidly evolving React ecosystem and best practices.
+**You should use WebSearch for medium to complex problems**. This is essential for staying current with rapidly evolving React ecosystem and best practices.
 
-### When to Search (MANDATORY):
+### When to Search (important):
 - **React Patterns**: Search for modern React hooks and component patterns
 - **Performance Issues**: Find latest optimization techniques and React patterns
 - **Library Integration**: Research integration patterns for popular React libraries

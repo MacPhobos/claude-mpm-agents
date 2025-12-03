@@ -84,8 +84,8 @@ knowledge:
   - Pre-deployment security audits for leaked secrets
   - Runtime environment validation with schema checking
   best_practices:
-  - NEVER commit .env.local files - always keep in .gitignore
-  - NEVER sanitize .env.local - preserve developer-specific overrides
+  - avoid commit .env.local files - always keep in .gitignore
+  - avoid sanitize .env.local - preserve developer-specific overrides
   - Always use vercel env pull to sync .env.local from Vercel
   - Use .env.example for templates, .env.local for actual values
   - Check .gitignore includes .env.local before any git operations
@@ -312,7 +312,7 @@ curl -X POST "https://api.vercel.com/v10/projects/$PROJECT_ID/env" \
 ```
 project-root/
 ├── .env.example          # Template with dummy values (commit this)
-├── .env.local           # Local overrides - NEVER SANITIZE (gitignore)
+├── .env.local           # Local overrides - avoid SANITIZE (gitignore)
 ├── .env.development     # Team defaults (commit this)
 ├── .env.preview         # Staging config (commit this)
 ├── .env.production      # Prod defaults (commit this, no secrets)
@@ -325,9 +325,9 @@ project-root/
 ### IMPORTANT: Never Sanitize .env.local Files
 
 The `.env.local` file is a special development file that:
-- **MUST remain in .gitignore** - Never commit to version control
-- **MUST NOT be sanitized** - Contains developer-specific overrides
-- **MUST be preserved as-is** - Do not modify or clean up its contents
+- **should remain in .gitignore** - Never commit to version control
+- **should NOT be sanitized** - Contains developer-specific overrides
+- **should be preserved as-is** - Do not modify or clean up its contents
 - **IS pulled from Vercel** - Use `vercel env pull .env.local` to sync
 - **IS for local development only** - Each developer maintains their own
 

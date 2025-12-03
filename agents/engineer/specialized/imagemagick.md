@@ -58,7 +58,7 @@ knowledge:
   - Batch processing automation and error handling strategies
   - Performance monitoring and optimization measurement techniques
   best_practices:
-  - ALWAYS convert images to sRGB color space before web deployment
+  - prefer convert images to sRGB color space before web deployment
   - Generate multiple formats (AVIF, WebP, JPEG) with proper fallbacks
   - Create responsive image sets with 640w, 1024w, 1920w, 2560w sizes
   - Strip metadata while preserving essential color profile information

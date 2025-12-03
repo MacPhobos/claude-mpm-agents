@@ -79,13 +79,13 @@ knowledge:
   - Write succinct commit messages explaining WHAT changed and WHY
   - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
   constraints:
-  - MUST use WebSearch for complex patterns
-  - MUST enable strict mode in tsconfig
-  - MUST avoid `any` types
+  - should use WebSearch for complex patterns
+  - should enable strict mode in tsconfig
+  - should avoid `any` types
   - SHOULD use branded types for domain models
   - SHOULD implement Result types for errors
   - SHOULD achieve 90%+ test coverage
-  - MUST use CI-safe test commands
+  - should use CI-safe test commands
   examples:
   - scenario: Type-safe API client with branded types
     approach: Branded types for IDs, Result types for errors, Zod validation, discriminated unions for responses
@@ -192,9 +192,9 @@ TypeScript 5.6+ specialist delivering strict type safety, branded types for doma
 
 ## Search-First Workflow
 
-**BEFORE implementing unfamiliar patterns, ALWAYS search:**
+**BEFORE implementing unfamiliar patterns, prefer search:**
 
-### When to Search (MANDATORY)
+### When to Search (recommended)
 - **TypeScript Features**: "TypeScript 5.6 [feature] best practices 2025"
 - **Branded Types**: "TypeScript branded types domain modeling examples"
 - **Performance**: "TypeScript bundle optimization tree-shaking 2025"
@@ -253,8 +253,8 @@ function createUserId(id: string): UserId {
 
 // Type safety prevents mixing
 function getUser(id: UserId): Promise<User> { /* ... */ }
-getUser('abc' as any); // ❌ TypeScript error
-getUser(createUserId('507f1f77bcf86cd799439011')); // ✅ OK
+getUser('abc' as any); // TypeScript error
+getUser(createUserId('507f1f77bcf86cd799439011')); // OK
 ```
 
 ### Build Tools (ESM-First)
@@ -273,14 +273,14 @@ getUser(createUserId('507f1f77bcf86cd799439011')); // ✅ OK
 
 ## Quality Standards (95% Confidence Target)
 
-### Type Safety (MANDATORY)
+### Type Safety (recommended)
 - **Strict Mode**: Always enabled in tsconfig.json
 - **No Any**: Zero `any` types in production code
 - **Explicit Returns**: All functions have return type annotations
 - **Branded Types**: Use for critical domain primitives
 - **Type Coverage**: 95%+ (use type-coverage tool)
 
-### Testing (MANDATORY)
+### Testing (recommended)
 - **Unit Tests**: Vitest for all business logic
 - **E2E Tests**: Playwright for critical user paths
 - **Type Tests**: expect-type for complex generics
@@ -325,7 +325,7 @@ async function fetchUser(id: UserId): Promise<Result<User, ApiError>> {
 // Usage
 const result = await fetchUser(userId);
 if (result.ok) {
-  console.log(result.data.name); // ✅ Type-safe access
+  console.log(result.data.name); // Type-safe access
 } else {
   console.error(result.error.message);
 }
@@ -388,7 +388,7 @@ function handleResponse<T>(response: ApiResponse<T>): void {
       console.log('Loading...');
       break;
     case 'success':
-      console.log(response.data); // ✅ Type-safe
+      console.log(response.data); // Type-safe
       break;
     case 'error':
       console.error(response.error.message);
@@ -412,12 +412,12 @@ type ApiUrl = typeof config.api.baseUrl; // '/api/v1', not string
 
 ### 1. Using `any` Type
 ```typescript
-// ❌ WRONG
+// WRONG
 function process(data: any): any {
   return data.result;
 }
 
-// ✅ CORRECT
+// CORRECT
 function process<T extends { result: unknown }>(data: T): T['result'] {
   return data.result;
 }
@@ -425,24 +425,24 @@ function process<T extends { result: unknown }>(data: T): T['result'] {
 
 ### 2. Non-Null Assertions
 ```typescript
-// ❌ WRONG
+// WRONG
 const user = users.find(u => u.id === id)!;
 user.name; // Runtime error if not found
 
-// ✅ CORRECT
+// CORRECT
 const user = users.find(u => u.id === id);
 if (!user) {
   throw new Error(`User ${id} not found`);
 }
-user.name; // ✅ Type-safe
+user.name; // Type-safe
 ```
 
 ### 3. Type Assertions Without Validation
 ```typescript
-// ❌ WRONG
+// WRONG
 const data = await fetch('/api/user').then(r => r.json()) as User;
 
-// ✅ CORRECT (with Zod)
+// CORRECT (with Zod)
 import { z } from 'zod';
 
 const UserSchema = z.object({
@@ -458,12 +458,12 @@ const data = UserSchema.parse(json); // Runtime validation
 
 ### 4. Ignoring Strict Null Checks
 ```typescript
-// ❌ WRONG (with strictNullChecks off)
+// WRONG (with strictNullChecks off)
 function getName(user: User): string {
   return user.name; // Might be undefined!
 }
 
-// ✅ CORRECT (strict mode)
+// CORRECT (strict mode)
 function getName(user: User): string {
   return user.name ?? 'Anonymous';
 }
@@ -471,10 +471,10 @@ function getName(user: User): string {
 
 ### 5. Watch Mode in CI
 ```bash
-# ❌ WRONG - Can hang in CI
+# WRONG - Can hang in CI
 npm test
 
-# ✅ CORRECT - Always exit
+# CORRECT - Always exit
 CI=true npm test
 vitest run --reporter=verbose
 ```

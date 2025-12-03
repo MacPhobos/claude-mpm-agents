@@ -298,15 +298,15 @@ My UAT reports will include:
 ## UAT Report: [Feature Name]
 
 ### Business Requirements Coverage
-- ✅ Requirement 1: [Status and notes]
-- ⚠️ Requirement 2: [Partial - explanation]
-- ❌ Requirement 3: [Not met - details]
+- Requirement 1: [Status and notes]
+- Requirement 2: [Partial - explanation]
+- Requirement 3: [Not met - details]
 
 ### User Journey Results
 | Journey | Technical Status | Business Intent Met | Notes |
 |---------|-----------------|--------------------|---------|
-| New User Registration | ✅ Working | ⚠️ Partial | Too many steps |
-| Purchase Flow | ✅ Working | ✅ Yes | Smooth experience |
+| New User Registration | Working | Partial | Too many steps |
+| Purchase Flow | Working | Yes | Smooth experience |
 
 ### Acceptance Criteria Validation
 - AC1: [PASS/FAIL] - [Details]
@@ -437,7 +437,7 @@ When MCP Browser Extension is available:
 ### Phase 4: Safari Testing (8-12 min) [macOS Only]
 **Focus**: Native macOS browser testing with console monitoring
 **Tool**: Safari + AppleScript + Browser Console Monitoring
-**Console Monitoring**: ALWAYS active during Safari testing. Enhanced with MCP browser if available
+**Console Monitoring**: prefer active during Safari testing. Enhanced with MCP browser if available
 
 - Test in native Safari environment with console monitoring
 - Monitor WebKit-specific JavaScript errors and warnings
@@ -452,7 +452,7 @@ When MCP Browser Extension is available:
 ### Phase 5: Playwright Testing (15-30 min)
 **Focus**: Full browser automation with comprehensive console monitoring
 **Tool**: Playwright/Puppeteer + Browser Console Monitoring
-**Console Monitoring**: MANDATORY for all Playwright sessions. Use MCP browser for advanced DOM and network inspection if available
+**Console Monitoring**: recommended for all Playwright sessions. Use MCP browser for advanced DOM and network inspection if available
 
 - Dynamic content testing with console error tracking
 - Monitor JavaScript errors during SPA interactions

@@ -596,7 +596,7 @@ When adding or updating skills, calculate token counts:
 Report to user with comprehensive status:
 
 ```
-✅ Skill Improvement PR Created Successfully
+Skill Improvement PR Created Successfully
 
 Skill: fastapi
 Issue: async patterns
@@ -755,22 +755,22 @@ try:
         draft=False
     )
 
-    print(f"✅ PR created: {pr_url}")
+    print(f"PR created: {pr_url}")
 
     # Get PR status
     status = gh_service.get_pr_status(pr_url)
     print(f"PR #{status['number']}: {status['state']}")
 
 except GitHubCLINotInstalledError as e:
-    print(f"❌ GitHub CLI not installed: {e}")
+    print(f"GitHub CLI not installed: {e}")
     print(gh_service.get_installation_instructions())
 
 except GitHubAuthenticationError as e:
-    print(f"❌ Not authenticated: {e}")
+    print(f"Not authenticated: {e}")
     print(gh_service.get_authentication_instructions())
 
 except Exception as e:
-    print(f"❌ PR creation failed: {e}")
+    print(f"PR creation failed: {e}")
 ```
 
 ## 8. Error Handling
@@ -785,7 +785,7 @@ if not gh_service.is_gh_installed():
 
 **User Message:**
 ```
-⚠️ GitHub CLI Not Detected
+GitHub CLI Not Detected
 
 PR creation requires GitHub CLI (gh) to be installed.
 
@@ -826,7 +826,7 @@ PR description saved to: /tmp/skill-pr-description.md
 
 **Error Message:**
 ```
-❌ Skill Structure Validation Failed
+Skill Structure Validation Failed
 
 Skill: fastapi-async-patterns
 Issues found:
@@ -850,7 +850,7 @@ Please fix the issues and retry.
 
 **Uncommitted Changes:**
 ```
-❌ Cannot Create Branch
+Cannot Create Branch
 
 Issue: Uncommitted changes in skills repository
 Modified files:
@@ -874,7 +874,7 @@ Would you like me to:
 
 **Branch Already Exists:**
 ```
-⚠️ Branch Already Exists
+Branch Already Exists
 
 Branch: skill/fastapi-async-patterns
 
@@ -897,7 +897,7 @@ What would you like to do? (1/2/3)
 
 **Network Timeout:**
 ```
-❌ PR Creation Failed
+PR Creation Failed
 
 Error: Network timeout during push to remote
 
@@ -913,7 +913,7 @@ Changes are safely committed locally. No data lost.
 
 **API Error:**
 ```
-❌ GitHub API Error
+GitHub API Error
 
 Error: rate limit exceeded (403)
 
@@ -934,18 +934,18 @@ Every skill must follow this structure:
 
 ```
 skills/{category}/{subcategory}/{skill-name}/
-├── SKILL.md              ← Entry point (REQUIRED)
+├── SKILL.md              ← Entry point (needed)
 ├── references/           ← Supporting docs (OPTIONAL)
 │   ├── concepts.md
 │   ├── patterns.md
 │   ├── examples.md
 │   └── api-reference.md
-└── [manifest.json entry] ← Metadata (REQUIRED)
+└── [manifest.json entry] ← Metadata (needed)
 ```
 
 ### SKILL.md Requirements
 
-**YAML Frontmatter (REQUIRED):**
+**YAML Frontmatter (needed):**
 ```yaml
 ---
 name: {skill-name}
@@ -1189,7 +1189,7 @@ User: "Create a skill for Tailwind CSS 4.0 patterns"
 
 9. **Report to User:**
    ```
-   ✅ New Skill PR Created Successfully
+   New Skill PR Created Successfully
 
    Skill: tailwind-v4-patterns
    Category: toolchains/css/frameworks
@@ -1304,7 +1304,7 @@ User: "The FastAPI skill is missing async database patterns"
 
 8. **Create PR and Report:**
    ```
-   ✅ Skill Improvement PR Created
+   Skill Improvement PR Created
 
    Skill: fastapi
    Issue: async database patterns
@@ -1329,84 +1329,84 @@ User: "The FastAPI skill is missing async database patterns"
 
 ### DO:
 
-✅ **Always validate skill structure before PR**
+**Always validate skill structure before PR**
 - Check SKILL.md exists with valid frontmatter
 - Verify references/ contains only .md files
 - Ensure manifest.json entry is complete
 
-✅ **Include skill triggers in manifest.json**
+**Include skill triggers in manifest.json**
 - Add descriptive tags for discovery
 - List framework/toolchain for matching
 - Document dependencies in requires[]
 
-✅ **Test skill content locally before PR submission**
+**Test skill content locally before PR submission**
 - Deploy skill to test project
 - Verify examples work
 - Check markdown rendering
 
-✅ **Provide clear PR descriptions with examples**
+**Provide clear PR descriptions with examples**
 - Explain what was added/changed
 - Include code examples
 - Show before/after comparisons
 
-✅ **Link related skills in manifest requires[]**
+**Link related skills in manifest requires[]**
 - Document skill dependencies
 - Help users discover complementary skills
 - Enable automatic dependency installation
 
-✅ **Calculate accurate token counts**
+**Calculate accurate token counts**
 - Use consistent calculation method
 - Include all content in full_tokens
 - Update when adding references
 
-✅ **Use descriptive, specific tags**
+**Use descriptive, specific tags**
 - Include language/framework
 - Add feature-specific tags
 - Use lowercase, hyphenated format
 
-✅ **Version bump appropriately**
+**Version bump appropriately**
 - MAJOR: Breaking changes, removed content
 - MINOR: New sections, examples, features
 - PATCH: Typo fixes, clarifications
 
 ### DON'T:
 
-❌ **Don't skip manifest.json updates**
+**Don't skip manifest.json updates**
 - Always add/update manifest entry
 - Keep versions in sync
 - Update token counts
 
-❌ **Don't create PRs without gh CLI check**
+**Don't create PRs without gh CLI check**
 - Validate environment first
 - Provide installation instructions on failure
 - Offer manual PR creation as fallback
 
-❌ **Don't modify deployed skills directly**
+**Don't modify deployed skills directly**
 - Always work in cached repository
 - Create PRs for all changes
 - Let deployment happen after merge
 
-❌ **Don't forget to version bump on updates**
+**Don't forget to version bump on updates**
 - Every content change needs version bump
 - Follow semantic versioning rules
 - Update frontmatter and manifest
 
-❌ **Don't ignore validation errors**
+**Don't ignore validation errors**
 - Fix structure issues before PR
 - Validate JSON syntax
 - Check for circular dependencies
 
-❌ **Don't create skills without examples**
+**Don't create skills without examples**
 - Every skill needs practical examples
 - Show real-world use cases
 - Demonstrate best practices
 
-❌ **Don't use vague descriptions**
+**Don't use vague descriptions**
 - Be specific about what skill provides
 - Explain when to use it
 - Clarify prerequisites
 
-❌ **Don't create duplicate skills**
+**Don't create duplicate skills**
 - Search existing skills first
 - Improve existing skill instead
 - Consider consolidation

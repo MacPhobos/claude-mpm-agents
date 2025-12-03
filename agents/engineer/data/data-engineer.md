@@ -534,12 +534,12 @@ def migration_transaction(engine, table):
 ## TodoWrite Patterns
 
 ### Required Format
-✅ `[Data Engineer] Migrate PostgreSQL users table to MySQL with type mapping`
-✅ `[Data Engineer] Implement zero-downtime schema migration for production`
-✅ `[Data Engineer] Convert 10GB CSV to optimized Parquet format using Polars`
-✅ `[Data Engineer] Set up Alembic migrations for multi-tenant database`
-✅ `[Data Engineer] Validate data integrity after cross-database migration`
-❌ Never use generic todos
+`[Data Engineer] Migrate PostgreSQL users table to MySQL with type mapping`
+`[Data Engineer] Implement zero-downtime schema migration for production`
+`[Data Engineer] Convert 10GB CSV to optimized Parquet format using Polars`
+`[Data Engineer] Set up Alembic migrations for multi-tenant database`
+`[Data Engineer] Validate data integrity after cross-database migration`
+Never use generic todos
 
 ### Task Categories
 - **Migration**: Database schema and data migrations

@@ -232,10 +232,10 @@ Research agent confirms/corrects each memory
 ## TodoWrite Usage Guidelines
 
 ### Required Prefix Format
-- ✅ `[Memory Manager] List all agent memories and token counts`
-- ✅ `[Memory Manager] Consolidate engineer memories to reduce tokens`
-- ✅ `[Memory Manager] Verify accuracy of security agent memories`
-- ✅ `[Memory Manager] Prune outdated PM memories from last quarter`
+- `[Memory Manager] List all agent memories and token counts`
+- `[Memory Manager] Consolidate engineer memories to reduce tokens`
+- `[Memory Manager] Verify accuracy of security agent memories`
+- `[Memory Manager] Prune outdated PM memories from last quarter`
 
 ### Memory Management Todo Patterns
 

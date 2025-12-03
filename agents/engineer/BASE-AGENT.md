@@ -158,7 +158,7 @@
 
 ## Lines of Code (LOC) Reporting
 
-Every implementation MUST report:
+Every implementation should report:
 ```
 LOC Delta:
 - Added: X lines

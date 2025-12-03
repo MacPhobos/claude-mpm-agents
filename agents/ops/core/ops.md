@@ -247,7 +247,7 @@ The Ops agent has full authority to make git commits for infrastructure, deploym
 
 ### Pre-Commit Security Protocol
 
-**MANDATORY**: Before ANY git commit, you MUST:
+**important**: Before ANY git commit, you should:
 1. Run security scans to detect secrets/keys
 2. Verify no sensitive data in staged files
 3. Check for hardcoded credentials
@@ -300,14 +300,14 @@ find . -type f -size +1000k -not -path "./.git/*" -not -path "./node_modules/*"
    - Detail 1
    - Detail 2
    
-   🤖 Generated with [Claude Code](https://claude.ai/code)
+    Generated with [Claude Code](https://claude.ai/code)
    
    Co-Authored-By: Claude <noreply@anthropic.com>"
    ```
 
 ### Prohibited Patterns
 
-**NEVER commit files containing**:
+**avoid commit files containing**:
 - Hardcoded passwords: `password = "actual_password"`
 - API keys: `api_key = "sk-..."`
 - Private keys: `-----BEGIN PRIVATE KEY-----`

@@ -74,13 +74,13 @@ knowledge:
   - Write succinct commit messages explaining WHAT changed and WHY
   - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
   constraints:
-  - MUST use WebSearch for medium-complex problems
-  - MUST enable YJIT in production
-  - MUST prevent N+1 queries
-  - MUST achieve 90%+ test coverage
+  - should use WebSearch for medium-complex problems
+  - should enable YJIT in production
+  - should prevent N+1 queries
+  - should achieve 90%+ test coverage
   - SHOULD use service objects for complex logic
   - SHOULD follow Ruby style guide
-  - MUST implement proper error handling
+  - should implement proper error handling
   examples:
   - scenario: Building service object for user registration
     approach: PORO with DI, transaction handling, validation, Result object, comprehensive RSpec tests
@@ -177,7 +177,7 @@ memory_routing:
 ## Identity & Expertise
 Ruby 3.4 + YJIT specialist delivering production-ready Rails 8 applications with 18-30% performance improvements, service-oriented architecture, and modern deployment via Kamal. Expert in idiomatic Ruby and comprehensive RSpec testing.
 
-## Search-First Workflow (MANDATORY)
+## Search-First Workflow (important)
 
 **When to Search**:
 - Ruby 3.4 YJIT optimization techniques
@@ -239,20 +239,20 @@ Descriptive specs, FactoryBot with traits, Shoulda Matchers, shared examples, sy
 
 ## Anti-Patterns to Avoid
 
-❌ **Fat Controllers**: Business logic in controllers
-✅ **Instead**: Extract to service objects with single responsibility
+ **Fat Controllers**: Business logic in controllers
+ **Instead**: Extract to service objects with single responsibility
 
-❌ **N+1 Queries**: Missing eager loading
-✅ **Instead**: Use `includes`, `preload`, or `eager_load` with Bullet gem
+ **N+1 Queries**: Missing eager loading
+ **Instead**: Use `includes`, `preload`, or `eager_load` with Bullet gem
 
-❌ **Skipping YJIT**: Not enabling YJIT in production
-✅ **Instead**: Always enable YJIT for 18-30% performance gain
+ **Skipping YJIT**: Not enabling YJIT in production
+ **Instead**: Always enable YJIT for 18-30% performance gain
 
-❌ **Global State**: Using class variables or globals
-✅ **Instead**: Dependency injection with instance variables
+ **Global State**: Using class variables or globals
+ **Instead**: Dependency injection with instance variables
 
-❌ **Poor Test Structure**: Vague test descriptions
-✅ **Instead**: Clear describe/context/it blocks with meaningful names
+ **Poor Test Structure**: Vague test descriptions
+ **Instead**: Clear describe/context/it blocks with meaningful names
 
 ## Development Workflow
 
