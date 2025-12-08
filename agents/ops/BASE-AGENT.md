@@ -43,9 +43,9 @@
 - Metrics check: Response time within SLA
 
 #### Containers (Docker)
-- Container running: `docker ps | grep <container>`
-- Health status: `docker inspect --format='{{.State.Health.Status}}'`
-- Logs review: `docker logs <container>`
+- Container running: Check container status
+- Health status: Verify health check endpoints
+- Logs review: Check container logs
 - Resource usage: CPU/memory within limits
 
 #### Cloud Platforms (Vercel, GCP, AWS)
@@ -55,8 +55,8 @@
 - Endpoint accessibility: Public URL responds
 
 #### Local Development
-- Process running: `lsof -i :<port>` or `ps aux | grep <process>`
-- HTTP accessible: `curl localhost:<port>`
+- Process running: Verify process is active
+- HTTP accessible: Test local endpoint
 - Logs clean: No startup errors
 - Expected ports bound: Service listening
 
@@ -113,7 +113,7 @@ Before ANY git push:
 
 ### Logging Standards
 - **Structured logging**: JSON format preferred
-- **Log levels**: DEBUG, INFO, WARN, ERROR, important
+- **Log levels**: DEBUG, INFO, WARN, ERROR, CRITICAL
 - **Context**: Include request IDs, user IDs
 - **Retention**: Define retention policies
 - **Searchable**: Use log aggregation tools
@@ -288,6 +288,111 @@ Before declaring deployment complete:
 - [ ] Team notified
 - [ ] Post-deployment verification completed
 
+## Database Migration Workflow
+
+Follow migration-first development - schema changes always start with migrations.
+
+**For detailed database migration workflows, invoke the skill:**
+- `universal-data-database-migration` - Universal database migration patterns
+
+**For ORM-specific patterns, invoke the appropriate skill:**
+- `toolchains-typescript-data-drizzle-migrations` - Drizzle ORM migration workflows (TypeScript)
+- `toolchains-python-data-sqlalchemy` - SQLAlchemy migration workflows (Python)
+
+### Universal Migration Principles
+
+- **Schema First**: Never write ORM schema before migration
+- **Single Source of Truth**: Migration file is the canonical definition
+- **Version Control**: All migrations and snapshots in git
+- **CI Validation**: Automated schema drift detection
+- **Staging First**: Test migrations before production
+- **Rollback Plan**: Maintain down migrations for critical changes
+
+## API Development Standards
+
+### Request/Response Patterns
+
+**Consistent Error Responses**:
+```
+type ErrorResponse = {
+  error: string;
+  details?: Array<{ path: string; message: string }>;
+  code?: string;
+};
+```
+
+**Success Response Envelope**:
+```
+type SuccessResponse<T> = {
+  data: T;
+  meta?: Record<string, unknown>;
+};
+```
+
+### Input Validation
+- Validate all inputs at the boundary
+- Use schema validation libraries (Zod, Pydantic, etc.)
+- Return detailed validation errors
+- Sanitize user input
+
+**For framework-specific validation patterns, invoke the appropriate skill:**
+- `toolchains-nextjs-api-validated-handler` - Type-safe Next.js API validation
+- `toolchains-python-validation-pydantic` - Pydantic validation (Python)
+- `toolchains-typescript-validation-zod` - Zod validation (TypeScript)
+
+### Pagination Standards
+- Consistent pagination across all list endpoints
+- Maximum limit (e.g., 100 items per page)
+- Default page size (e.g., 10 items)
+- Include total count
+- Provide next/previous page indicators
+
+### Security Requirements
+- Authentication on protected routes
+- Authorization checks before data access
+- Rate limiting on public endpoints
+- Input sanitization
+- Output validation (no sensitive data leaks)
+
+**For detailed API security testing, invoke the skill:**
+- `toolchains-universal-security-api-review` - API security testing checklist
+
+## CI/CD Quality Integration
+
+Proactively add validation to CI pipeline to catch issues before production.
+
+**For detailed CI/CD workflows, invoke the skill:**
+- `toolchains-universal-infrastructure-github-actions` - GitHub Actions patterns
+
+### Quality Check Principles
+
+- **Fail Fast**: Catch errors in CI, not production
+- **Automated Standards**: Team standards enforced via automation
+- **Schema Validation**: Prevent schema drift and bad migrations
+- **Type Safety**: Verify compilation before merge
+- **Consistent Linting**: Enforce code style automatically
+- **Documentation via CI**: CI configuration documents quality requirements
+
+### Progressive Quality Gates
+
+Start with basic checks and progressively increase rigor:
+
+**Phase 1 - Foundation** (Week 1):
+- Database schema validation
+- Type checking (TypeScript, mypy, etc.)
+- Basic linting
+
+**Phase 2 - Enhancement** (Week 2-3):
+- Security audits
+- Test coverage thresholds
+- Performance benchmarks
+
+**Phase 3 - Excellence** (Month 2+):
+- Bundle size limits
+- Lighthouse scores
+- Accessibility audits
+- E2E test suites
+
 ## Emergency Response
 
 ### Incident Response Steps
@@ -298,9 +403,22 @@ Before declaring deployment complete:
 5. **Resolve**: Root cause fix
 6. **Review**: Postmortem
 
+**For detailed emergency procedures, invoke the skill:**
+- `universal-operations-emergency-release` - Emergency hotfix workflows
+
 ### On-Call Best Practices
 - Response time SLAs defined
 - Escalation paths clear
 - Runbooks accessible
 - Tools and access ready
 - Post-incident reviews
+
+## Related Skills
+
+For detailed workflows and implementation patterns:
+- `universal-data-database-migration` - Universal database migration patterns
+- `toolchains-typescript-data-drizzle-migrations` - Drizzle ORM workflows (TypeScript)
+- `toolchains-nextjs-api-validated-handler` - Type-safe Next.js API validation
+- `toolchains-universal-security-api-review` - API security testing checklist
+- `toolchains-universal-infrastructure-github-actions` - CI/CD workflows
+- `universal-operations-emergency-release` - Emergency hotfix procedures

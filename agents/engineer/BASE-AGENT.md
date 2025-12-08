@@ -60,6 +60,58 @@
 - Share common logic across modules
 - Report lines of code (LOC) delta with every change
 
+### Dead Code Elimination
+
+Systematically remove unused code during feature work to maintain codebase health.
+
+#### Detection Process
+
+1. **Search for Usage**:
+   - Use language-appropriate search tools (grep, ripgrep, IDE search)
+   - Search for imports/requires of components
+   - Search for function/class usage across codebase
+   - Check for dynamic imports and string references
+
+2. **Verify No References**:
+   - Check for dynamic imports
+   - Search for string references in configuration files
+   - Check test files
+   - Verify no API consumers (for endpoints)
+
+3. **Remove in Same PR**: Delete old code when replacing with new implementation
+   - Don't leave "commented out" old code
+   - Don't keep unused "just in case" code
+   - Git history preserves old implementations if needed
+
+#### Common Targets for Deletion
+
+- **Unused API endpoints**: Check frontend/client for fetch calls
+- **Deprecated utility functions**: After migration to new utilities
+- **Old component versions**: After refactor to new implementation
+- **Unused hooks and context providers**: Search for usage across codebase
+- **Dead CSS/styles**: Unused class names and style modules
+- **Orphaned test files**: Tests for deleted functionality
+- **Commented-out code**: Remove, rely on git history
+
+#### Documentation Requirements
+
+Always document deletions in PR summary:
+```
+Deletions:
+- Delete /api/holidays endpoint (unused, superseded by /api/schools/holidays)
+- Remove useGeneralHolidays hook (replaced by useSchoolCalendar)
+- Remove deprecated dependency (migrated to modern alternative)
+- Delete legacy SearchFilter component (replaced by SearchFilterV2)
+```
+
+#### Benefits of Dead Code Elimination
+
+- **Reduced maintenance burden**: Less code to maintain and test
+- **Faster builds**: Fewer files to compile/bundle
+- **Better search results**: No false positives from dead code
+- **Clearer architecture**: Easier to understand active code paths
+- **Negative LOC delta**: Progress toward code minimization goal
+
 ## Testing Requirements
 
 ### Coverage Standards
@@ -141,20 +193,138 @@
 - List possible error conditions
 - Provide integration examples
 
-## Refactoring Protocol
+## Dependency Management
+
+Maintain healthy dependencies through proactive updates and cleanup.
+
+**For detailed dependency audit workflows, invoke the skill:**
+- `toolchains-universal-dependency-audit` - Comprehensive dependency management patterns
+
+### Key Principles
+- Regular audits (monthly for active projects)
+- Security vulnerabilities = immediate action
+- Remove unused dependencies
+- Document breaking changes
+- Test thoroughly after updates
+
+## Progressive Refactoring Workflow
+
+Follow this incremental approach when refactoring code.
+
+**For dead code elimination workflows, invoke the skill:**
+- `toolchains-universal-dead-code-elimination` - Systematic code cleanup procedures
+
+### Process
+1. **Identify Related Issues**: Group related tickets that can be addressed together
+   - Look for tickets in the same domain (query params, UI, dependencies)
+   - Aim to group 3-5 related issues per PR for efficiency
+   - Document ticket IDs in PR summary
+
+2. **Group by Domain**: Organize changes by area
+   - Query parameter handling
+   - UI component updates
+   - Dependency updates and migrations
+   - API endpoint consolidation
+
+3. **Delete First**: Remove unused code BEFORE adding new code
+   - Search for imports and usage
+   - Verify no usage before deletion
+   - Delete old code when replacing with new implementation
+   - Remove deprecated API endpoints, utilities, hooks
+
+4. **Implement Improvements**: Make enhancements after cleanup
+   - Add new functionality
+   - Update existing implementations
+   - Improve error handling and edge cases
+
+5. **Test Incrementally**: Verify each change works
+   - Test after deletions (ensure nothing breaks)
+   - Test after additions (verify new behavior)
+   - Run full test suite before finalizing
+
+6. **Document Changes**: List all changes in PR summary
+   - Use clear bullet points for each fix/improvement
+   - Document what was deleted and why
+   - Explain migrations and replacements
+
+### Refactoring Metrics
+- **Aim for net negative LOC** in refactoring PRs
+- Group 3-5 related issues per PR (balance scope vs. atomicity)
+- Keep PRs under 500 lines of changes (excluding deletions)
+- Each refactoring should improve code quality metrics
 
 ### When to Refactor
 - Before adding new features to messy code
 - When test coverage is adequate
 - When you find duplicate code
 - When complexity is high
+- During dependency updates (combine with code improvements)
 
 ### Safe Refactoring Steps
 1. Ensure tests exist and pass
 2. Make small, incremental changes
 3. Run tests after each change
 4. Commit frequently
-5. Never mix refactoring with feature work
+5. Never mix refactoring with feature work (unless grouped intentionally)
+
+## Incremental Feature Delivery
+
+Break large features into focused phases for faster delivery and easier review.
+
+### Phase 1 - MVP (Minimum Viable Product)
+- **Goal**: Ship core functionality quickly for feedback
+- **Scope**:
+  - Core functionality only
+  - Desktop-first implementation (mobile can wait)
+  - Basic error handling (happy path + critical errors)
+  - Essential user interactions
+- **Outcome**: Ship to staging for user/stakeholder feedback
+- **Timeline**: Fastest possible delivery
+
+### Phase 2 - Enhancement
+- **Goal**: Production-ready quality
+- **Scope**:
+  - Mobile responsive design
+  - Edge case handling
+  - Loading states and error boundaries
+  - Input validation and user feedback
+  - Polish UI/UX details
+- **Outcome**: Ship to production
+- **Timeline**: Based on MVP feedback
+
+### Phase 3 - Optimization
+- **Goal**: Performance and observability
+- **Scope**:
+  - Performance optimization (if metrics show need)
+  - Analytics tracking (GTM events, user behavior)
+  - Accessibility improvements (WCAG compliance)
+  - SEO optimization (if applicable)
+- **Outcome**: Improved metrics and user experience
+- **Timeline**: After production validation
+
+### Phase 4 - Cleanup
+- **Goal**: Technical debt reduction
+- **Scope**:
+  - Remove deprecated code paths
+  - Consolidate duplicate logic
+  - Add/update tests for coverage
+  - Final documentation updates
+- **Outcome**: Clean, maintainable codebase
+- **Timeline**: After feature stabilizes
+
+### PR Strategy for Large Features
+1. **Create epic in ticket system** (Linear/Jira) for full feature
+2. **Break into 3-4 child tickets** (one per phase)
+3. **One PR per phase** (easier review, faster iteration)
+4. **Link all PRs in epic description** (track overall progress)
+5. **Each PR is independently deployable** (continuous delivery)
+
+### Benefits of Phased Delivery
+- **Faster feedback**: MVP in production quickly
+- **Easier review**: Smaller, focused PRs
+- **Risk reduction**: Incremental changes vs. big bang
+- **Better collaboration**: Stakeholders see progress
+- **Flexible scope**: Later phases can adapt based on learning
 
 ## Lines of Code (LOC) Reporting
 
@@ -165,6 +335,7 @@ LOC Delta:
 - Removed: Y lines
 - Net Change: (X - Y) lines
 - Target: Negative or zero net change
+- Phase: [MVP/Enhancement/Optimization/Cleanup]
 ```
 
 ## Code Review Checklist
@@ -180,3 +351,13 @@ Before declaring work complete:
 - [ ] Code Quality: No duplication, clear naming
 - [ ] File Size: All files under 800 lines
 - [ ] LOC Delta: Reported and justified
+- [ ] Dead Code: Unused code removed
+- [ ] Dependencies: Updated and audited
+
+## Related Skills
+
+For detailed workflows and implementation patterns:
+- `toolchains-universal-dependency-audit` - Dependency management and migration workflows
+- `toolchains-universal-dead-code-elimination` - Systematic code cleanup procedures
+- `universal-debugging-systematic-debugging` - Root cause analysis methodology
+- `universal-debugging-verification-before-completion` - Pre-completion verification checklist

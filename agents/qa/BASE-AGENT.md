@@ -70,7 +70,7 @@
 ## Test Quality Standards
 
 ### Test Naming
-- Use descriptive names: `test_user_cannot_login_with_invalid_password`
+- Use descriptive names that explain behavior
 - Follow language conventions: snake_case (Python), camelCase (JavaScript)
 - Include context: what, when, expected outcome
 
@@ -100,14 +100,14 @@ Follow Arrange-Act-Assert (AAA) pattern:
 ## JavaScript/TypeScript Testing
 
 ### Watch Mode Prevention
-- **important**: Check package.json before running tests
+- **CRITICAL**: Check package.json before running tests
 - Default test runners may use watch mode
 - Watch mode causes memory leaks and process hangs
 - Use CI mode explicitly: `CI=true npm test` or `--run` flag
 
 ### Process Management
-- Monitor for orphaned processes: `ps aux | grep -E "(vitest|jest|node.*test)"`
-- Clean up hanging processes: `pkill -f "vitest" || pkill -f "jest"`
+- Monitor for orphaned processes
+- Clean up hanging processes
 - Verify test process termination after execution
 - Test script must be CI-safe for automated execution
 
@@ -140,6 +140,8 @@ Follow Arrange-Act-Assert (AAA) pattern:
 - Critical user workflows
 - Cross-browser/platform tests
 - Performance benchmarks
+
+### When NOT to Automate
 - One-off exploratory tests
 - Rapidly changing UI
 - Tests that are hard to maintain
@@ -228,3 +230,80 @@ All QA reports should include:
 - **Performance data**: Actual measurements
 - **Logs/screenshots**: Supporting evidence
 - **Environment details**: Where tested
+
+## Pre-Merge Testing Workflows
+
+**For detailed pre-merge verification workflows, invoke the skill:**
+- `universal-verification-pre-merge` - Comprehensive pre-merge checklist
+
+### Quick Pre-Merge Checklist
+- [ ] Type checking passes
+- [ ] Linting passes with no errors
+- [ ] All existing tests pass locally
+- [ ] PR description is complete
+- [ ] Screenshots included for UI changes
+- [ ] Security checklist completed (if API changes)
+
+## Screenshot-Based UI Verification
+
+**For detailed screenshot workflows, invoke the skill:**
+- `universal-verification-screenshot` - Visual verification procedures
+
+### Screenshot Requirements for UI Changes
+For any PR that changes UI, capture:
+1. **Desktop View** (1920x1080)
+2. **Tablet View** (768x1024)
+3. **Mobile View** (375x667)
+
+### Benefits
+- Reviewers see changes without running code locally
+- Documents design decisions visually
+- Creates visual changelog
+- Catches responsive issues early
+
+## Database Migration Testing
+
+**For detailed migration testing, invoke the skill:**
+- `universal-data-database-migration` - Database migration testing procedures
+
+### Migration Testing Checklist
+1. **Local Testing**: Reset, migrate, verify
+2. **Staging Testing**: Deploy and test with realistic data
+3. **Production Verification**: Monitor execution and check logs
+
+## API Testing
+
+**For detailed API testing workflows, invoke the skill:**
+- `toolchains-universal-security-api-review` - API security testing checklist
+
+### API Testing Checklist
+Test all API endpoints systematically:
+- Happy path requests
+- Validation errors
+- Authentication requirements
+- Authorization checks
+- Pagination behavior
+- Edge cases
+- Rate limiting
+
+## Bug Fix Verification
+
+**For detailed bug fix verification, invoke the skill:**
+- `universal-verification-bug-fix` - Bug fix verification workflow
+
+### Bug Fix Verification Steps
+1. **Reproduce Before Fix**: Document exact steps
+2. **Verify Fix**: Confirm bug no longer occurs
+3. **Regression Testing**: Run full test suite
+4. **Documentation**: Update PR with verification details
+
+## Related Skills
+
+For detailed workflows and testing procedures:
+- `universal-verification-pre-merge` - Pre-merge verification checklist
+- `universal-verification-screenshot` - Screenshot-based UI verification
+- `universal-verification-bug-fix` - Bug fix verification workflow
+- `toolchains-universal-security-api-review` - API security testing
+- `universal-data-database-migration` - Database migration testing
+- `universal-testing-test-quality-inspector` - Test quality analysis
+- `universal-testing-testing-anti-patterns` - Testing anti-patterns to avoid
