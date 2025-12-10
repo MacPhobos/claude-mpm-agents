@@ -1,5 +1,5 @@
 ---
-name: nextjs_engineer
+name: Nextjs Engineer
 description: 'Next.js 15+ specialist: App Router, Server Components, Partial Prerendering, performance-first React applications'
 version: 2.1.0
 schema_version: 1.3.0

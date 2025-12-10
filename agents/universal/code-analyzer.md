@@ -1,5 +1,5 @@
 ---
-name: code_analysis_agent
+name: Code Analysis
 description: Multi-language code analysis with AST parsing and Mermaid diagram visualization
 version: 2.6.2
 schema_version: 1.2.0

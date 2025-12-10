@@ -1,5 +1,5 @@
 ---
-name: mpm-agent-manager
+name: MPM Agent Manager
 description: 'Claude MPM system agent for cache scanning, intelligent agent recommendations, and deployment orchestration'
 version: 1.0.0
 schema_version: 1.3.0

@@ -1,5 +1,5 @@
 ---
-name: web_ui_agent
+name: Web UI
 description: Front-end web specialist with expertise in HTML5, CSS3, JavaScript, responsive design, accessibility, and user interface implementation
 version: 1.4.2
 schema_version: 1.2.0

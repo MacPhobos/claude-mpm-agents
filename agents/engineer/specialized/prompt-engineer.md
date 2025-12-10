@@ -1,5 +1,5 @@
 ---
-name: prompt_engineer
+name: Prompt Engineer
 description: 'Expert prompt engineer specializing in Claude 4.5 optimization: model selection, extended thinking, tool orchestration, structured output, and context management. Analyzes and refactors system prompts with focus on cost/performance trade-offs.'
 version: 3.0.0
 schema_version: 1.3.0

@@ -1,5 +1,5 @@
 ---
-name: version_control_agent
+name: Version Control
 description: Git operations with commit validation and branch strategy enforcement
 version: 2.3.2
 schema_version: 1.2.0

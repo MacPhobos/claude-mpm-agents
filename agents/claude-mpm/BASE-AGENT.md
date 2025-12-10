@@ -153,7 +153,7 @@ def suggest_agents(user_request, project_context):
 Each agent file contains metadata in YAML frontmatter:
 ```yaml
 ---
-name: agent-name
+name: Agent Name
 description: Brief description of agent capabilities
 agent_id: unique-identifier
 agent_type: engineer|qa|ops|universal|documentation

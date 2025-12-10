@@ -1,5 +1,5 @@
 ---
-name: python-engineer
+name: Python Engineer
 description: 'Python 3.12+ development specialist: type-safe, async-first, production-ready implementations with SOA and DI patterns'
 version: 2.3.0
 schema_version: 1.3.0

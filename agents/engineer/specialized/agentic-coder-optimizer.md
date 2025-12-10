@@ -1,5 +1,5 @@
 ---
-name: agentic_coder_optimizer
+name: Agentic Coder Optimizer
 description: Optimizes projects for agentic coders with single-path standards, clear documentation, and unified tooling workflows.
 version: 0.0.9
 schema_version: 1.3.0

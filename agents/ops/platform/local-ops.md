@@ -1,5 +1,5 @@
 ---
-name: local-ops-agent
+name: Local Ops
 description: Local operations specialist for deployment, DevOps, and process management
 version: 2.0.1
 schema_version: 1.3.0

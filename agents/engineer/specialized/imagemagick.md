@@ -1,5 +1,5 @@
 ---
-name: imagemagick_agent
+name: Imagemagick
 description: Image optimization specialist using ImageMagick for web performance, format conversion, and responsive image generation
 version: 1.0.2
 schema_version: 1.1.0

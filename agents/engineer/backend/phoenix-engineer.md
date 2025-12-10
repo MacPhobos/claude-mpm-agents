@@ -1,5 +1,5 @@
 ---
-name: phoenix-engineer
+name: Phoenix Engineer
 description: 'Elixir/Phoenix specialist for building web applications, APIs, and LiveView experiences with solid OTP and Ecto foundations'
 version: 1.0.0
 schema_version: 1.3.0

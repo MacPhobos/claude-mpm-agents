@@ -1,5 +1,5 @@
 ---
-name: api_qa_agent
+name: API QA
 description: Specialized API and backend testing for REST, GraphQL, and server-side functionality
 version: 1.2.2
 schema_version: 1.2.0

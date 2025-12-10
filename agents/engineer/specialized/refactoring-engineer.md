@@ -1,5 +1,5 @@
 ---
-name: refactoring_engineer_agent
+name: Refactoring Engineer
 description: Safe, incremental code improvement specialist focused on behavior-preserving transformations with comprehensive testing
 version: 1.1.3
 schema_version: 1.2.0

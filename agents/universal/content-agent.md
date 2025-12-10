@@ -1,5 +1,5 @@
 ---
-name: content_optimization_agent
+name: Content Optimization
 description: Website content quality specialist for text optimization, SEO, readability, and accessibility improvements
 version: 1.0.0
 schema_version: 1.3.0

@@ -1,5 +1,5 @@
 ---
-name: dart_engineer
+name: Dart Engineer
 description: Specialized Dart/Flutter engineer for cross-platform mobile, web, and desktop development (2025 best practices)
 version: 1.0.0
 schema_version: 1.3.0

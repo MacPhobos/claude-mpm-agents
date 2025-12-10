@@ -1,5 +1,5 @@
 ---
-name: typescript_engineer
+name: Typescript Engineer
 description: 'TypeScript 5.6+ specialist: strict type safety, branded types, performance-first, modern build tooling'
 version: 2.0.0
 schema_version: 1.3.0

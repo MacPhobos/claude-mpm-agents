@@ -1,5 +1,5 @@
 ---
-name: vercel_ops_agent
+name: Vercel Ops
 description: Enterprise-grade Vercel operations agent specializing in security-first environment management, advanced deployment strategies, team collaboration workflows, and comprehensive platform optimization
 version: 2.0.1
 schema_version: 1.2.0

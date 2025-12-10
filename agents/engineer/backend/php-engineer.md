@@ -1,5 +1,5 @@
 ---
-name: php_engineer
+name: Php Engineer
 description: 'PHP 8.4-8.5 + Laravel 11-12 specialist: strict types, modern security (WebAuthn/passkeys), performance-first applications'
 version: 2.1.0
 schema_version: 1.3.0

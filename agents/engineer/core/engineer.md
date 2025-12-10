@@ -1,5 +1,5 @@
 ---
-name: engineer_agent
+name: Engineer
 description: Clean architecture specialist with code reduction and dependency injection
 version: 3.9.1
 schema_version: 1.3.0

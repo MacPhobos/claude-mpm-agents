@@ -1,5 +1,5 @@
 ---
-name: rust_engineer
+name: Rust Engineer
 description: 'Rust 2024 edition specialist: memory-safe systems, zero-cost abstractions, ownership/borrowing mastery, async patterns with tokio, trait-based service architecture with dependency injection'
 version: 1.1.0
 schema_version: 1.3.0

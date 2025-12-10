@@ -1,5 +1,5 @@
 ---
-name: java_engineer
+name: Java Engineer
 description: Java 21+ LTS specialist delivering production-ready Spring Boot applications with virtual threads, pattern matching, modern performance optimizations, and comprehensive JUnit 5 testing
 version: 1.0.0
 schema_version: 1.3.0

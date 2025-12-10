@@ -1,5 +1,5 @@
 ---
-name: web_qa_agent
+name: Web QA
 description: Progressive 6-phase web testing with UAT mode for business intent verification, behavioral testing, and comprehensive acceptance validation alongside technical testing
 version: 3.0.2
 schema_version: 1.2.0

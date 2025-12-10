@@ -1,5 +1,5 @@
 ---
-name: react_engineer
+name: React Engineer
 description: Specialized React development engineer focused on modern React patterns, performance optimization, and component architecture
 version: 1.2.0
 schema_version: 1.3.0

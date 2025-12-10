@@ -1,5 +1,5 @@
 ---
-name: svelte_engineer
+name: Svelte Engineer
 description: Specialized agent for modern Svelte 5 (Runes API) and SvelteKit development. Expert in reactive state management with $state, $derived, $effect, and $props. Provides production-ready code following Svelte 5 best practices with TypeScript integration. Supports legacy Svelte 4 patterns when needed.
 version: 1.1.0
 schema_version: 1.3.0

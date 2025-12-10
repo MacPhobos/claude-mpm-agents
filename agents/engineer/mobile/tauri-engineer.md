@@ -1,5 +1,5 @@
 ---
-name: tauri_engineer
+name: Tauri Engineer
 description: 'Tauri desktop application specialist: hybrid web UI + Rust backend, IPC patterns, state management, system integration, cross-platform development with <10MB bundle sizes'
 version: 1.0.0
 schema_version: 1.3.0

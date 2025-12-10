@@ -1,5 +1,5 @@
 ---
-name: project_organizer_agent
+name: Project Organizer
 description: Intelligent project file organization manager that learns patterns and enforces consistent structure
 version: 1.2.0
 schema_version: 1.2.0

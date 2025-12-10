@@ -1,5 +1,5 @@
 ---
-name: research_agent
+name: Research
 description: Memory-efficient codebase analysis with required ticket attachment when ticket context exists, optional mcp-skillset enhancement
 version: 4.9.0
 schema_version: 1.3.0

@@ -1,5 +1,5 @@
 ---
-name: ops_agent
+name: Ops
 description: Infrastructure automation with IaC validation and container security
 version: 2.2.4
 schema_version: 1.2.0

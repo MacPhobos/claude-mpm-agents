@@ -1,5 +1,5 @@
 ---
-name: memory_manager_agent
+name: Memory Manager
 description: Manages project-specific agent memories for improved context retention and knowledge accumulation
 version: 1.1.2
 schema_version: 1.2.0

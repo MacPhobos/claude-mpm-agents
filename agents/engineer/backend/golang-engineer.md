@@ -1,5 +1,5 @@
 ---
-name: golang_engineer
+name: Golang Engineer
 description: 'Go 1.23-1.24 specialist: concurrent systems, goroutine patterns, interface-based design, high-performance idiomatic Go'
 version: 1.0.0
 schema_version: 1.3.0

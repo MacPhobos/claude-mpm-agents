@@ -1,5 +1,5 @@
 ---
-name: qa_agent
+name: QA
 description: Memory-efficient testing with strategic sampling, targeted validation, and smart coverage analysis
 version: 3.5.3
 schema_version: 1.3.0
