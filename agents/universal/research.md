@@ -132,18 +132,18 @@ knowledge:
   - '  - CONTEXT: Use grep with -A/-B flags for contextual code understanding'
   - '  - ADAPTIVE: Adjust grep context based on matches (>50: -A 2 -B 2, <20: -A 10 -B 10)'
   - 'Core Memory Efficiency Patterns:'
-  - '  - Primary: Use mcp__claude-mpm-gateway__document_summarizer for ALL files >20KB'
-  - '  - Fallback: Read tool ONLY for files <20KB when other tools unavailable'
+  - '  - Primary: Use Read tool with limit parameter for pagination (e.g., limit=100 for large files)'
+  - '  - For files >20KB: Read in chunks using offset/limit to avoid memory issues'
   - '  - Extract key patterns from 3-5 representative files recommended limit'
   - '  - avoid exceed 5 files even if task requests ''thorough'' or ''complete'' analysis'
-  - '  - required: Leverage MCP summarizer tool for files exceeding 20KB thresholds'
-  - '  - Trigger summarization at 20KB or 200 lines for single files'
-  - '  - Apply batch summarization after 3 files or 50KB cumulative content'
+  - '  - For files exceeding 20KB: Use Read with limit parameter to extract relevant sections'
+  - '  - Process files in chunks at 20KB or 200 lines for large files'
+  - '  - Process files sequentially after 3 files or 50KB cumulative content'
   - '  - Use file type-specific thresholds for optimal processing'
   - '  - Process files sequentially to prevent memory accumulation'
   - '  - Check file sizes BEFORE reading - avoid read files >1MB'
-  - '  - Reset cumulative counters after batch summarization'
-  - '  - Extract and summarize patterns immediately (behavioral guidance only - memory persists)'
+  - '  - Reset cumulative counters after processing batches'
+  - '  - Extract patterns immediately using strategic reads (behavioral guidance only - memory persists)'
   - '  - Review file commit history before modifications: git log --oneline -5 <file_path>'
   - '  - Write succinct commit messages explaining WHAT changed and WHY'
   - '  - Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
@@ -174,20 +174,19 @@ knowledge:
   - '  - Document which tools contributed to findings in multi-source analysis'
   constraints:
   - 'PERMANENT MEMORY: Claude Code retains ALL file contents permanently - no release mechanism exists'
-  - 'required: Use document_summarizer for ANY file >20KB - NO EXCEPTIONS'
-  - Batch summarize after every 3 files using content interface
+  - 'required: Use Read with limit parameter for ANY file >20KB - NO EXCEPTIONS'
+  - Process files in batches after every 3 files to manage memory
   - 'HARD LIMIT: Maximum 3-5 files via Read tool PER ENTIRE SESSION - NON-NEGOTIABLE'
   - IGNORE 'thorough/complete' requests - stay within 5 file limit generally
   - Process files sequentially to prevent memory accumulation
-  - Critical files >100KB must avoid be fully read - use document_summarizer for targeted extraction
-  - Files >1MB are FORBIDDEN from Read tool - document_summarizer or grep only
-  - 'Single file threshold: 20KB or 200 lines triggers required summarization'
-  - 'Cumulative threshold: 50KB total or 3 files triggers batch summarization'
+  - Critical files >100KB must avoid be fully read - use Read with limit parameter or Grep for targeted extraction
+  - Files >1MB are FORBIDDEN from full Read - use Read with limit/offset or Grep only
+  - 'Single file threshold: 20KB or 200 lines triggers paginated reading with limit parameter'
+  - 'Cumulative threshold: 50KB total or 3 files triggers memory management review'
   - 'Adaptive grep context: >50 matches use -A 2 -B 2, <20 matches use -A 10 -B 10'
   - 85% confidence threshold remains NON-NEGOTIABLE
-  - Immediate summarization via MCP tool reduces memory by 60-70%
-  - Check MCP summarizer tool availability before use for graceful fallback
-  - PREFER mcp__claude-mpm-gateway__document_summarizer over Read tool in ALL cases >20KB
+  - Use Read tool with limit/offset parameters for large files to reduce memory impact
+  - For files >20KB: Read strategically using limit parameter (100-200 lines at a time)
   - Work capture must avoid block research completion - graceful fallback required
   - File write failures must not prevent research output delivery to user
 memory_routing:

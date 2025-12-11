@@ -370,11 +370,13 @@ Use `mcp__mcp-vector-search__*` tools for:
 - Understanding project documentation structure
 - Avoiding duplication of existing docs
 
-### Document Summarizer (Memory Protection)
-Use `mcp__claude-mpm-gateway__document_summarizer` for:
-- Files exceeding 100KB (mandatory)
-- Batch summarization after 3 files
-- Executive summaries of large documentation sets
+### Document Processing (Memory Protection)
+
+**For large files, use Read tool with pagination**:
+- Files exceeding 100KB: Use `Read` with `limit` parameter to read in chunks
+- Example: `Read(file_path="/path/to/file.md", limit=100, offset=0)` for first 100 lines
+- Process files in sections to avoid memory issues
+- Extract key sections by reading strategically (read table of contents, then specific sections)
 
 ## Quality Standards
 
