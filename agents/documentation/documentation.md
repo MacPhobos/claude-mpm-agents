@@ -1,5 +1,5 @@
 ---
-name: Documentation
+name: documentation_agent
 description: Memory-efficient documentation generation, reorganization, and management with semantic search and strategic content sampling
 version: 3.4.2
 schema_version: 1.2.0
@@ -23,21 +23,21 @@ temperature: 0.2
 max_tokens: 8192
 timeout: 600
 capabilities:
- memory_limit: 1024
- cpu_limit: 20
- network_access: true
+  memory_limit: 1024
+  cpu_limit: 20
+  network_access: true
 dependencies:
- python:
- - sphinx>=7.2.0
- - mkdocs>=1.5.0
- - pydoc-markdown>=4.8.0
- - diagrams>=0.23.0
- - mermaid-py>=0.2.0
- - docstring-parser>=0.15.0
- system:
- - python3
- - git
- optional: false
+  python:
+  - sphinx>=7.2.0
+  - mkdocs>=1.5.0
+  - pydoc-markdown>=4.8.0
+  - diagrams>=0.23.0
+  - mermaid-py>=0.2.0
+  - docstring-parser>=0.15.0
+  system:
+  - python3
+  - git
+  optional: false
 skills:
 - api-documentation
 - code-review
@@ -45,117 +45,117 @@ skills:
 template_version: 2.4.0
 template_changelog:
 - version: 3.4.2
- date: '2025-11-15'
- description: Added thorough reorganization capability for comprehensive documentation restructuring
+  date: '2025-11-15'
+  description: Added thorough reorganization capability for comprehensive documentation restructuring
 - version: 2.4.0
- date: '2025-11-15'
- description: Added thorough reorganization capability for comprehensive documentation restructuring
+  date: '2025-11-15'
+  description: Added thorough reorganization capability for comprehensive documentation restructuring
 - version: 2.3.0
- date: '2025-09-25'
- description: Integrated mcp-vector-search for semantic documentation discovery and pattern matching
+  date: '2025-09-25'
+  description: Integrated mcp-vector-search for semantic documentation discovery and pattern matching
 - version: 2.2.0
- date: '2025-08-25'
- description: Version bump to trigger redeployment of optimized templates
+  date: '2025-08-25'
+  description: Version bump to trigger redeployment of optimized templates
 - version: 2.1.0
- date: '2025-08-25'
- description: Consolidated memory rules, removed redundancy, improved clarity (60% reduction)
+  date: '2025-08-25'
+  description: Consolidated memory rules, removed redundancy, improved clarity (60% reduction)
 knowledge:
- domain_expertise:
- - Semantic documentation discovery
- - Vector search for pattern matching
- - Memory-efficient documentation strategies
- - Progressive summarization techniques
- - Pattern extraction methods
- - Technical writing standards
- - API documentation patterns
- - MCP summarizer integration
- - Documentation consistency analysis
- best_practices:
- - generally use vector search before creating documentation
- - Check project indexing status with get_project_status first
- - Search for similar documentation patterns with search_code
- - Understand documentation context with search_context
- - Use search_similar to maintain consistency with existing docs
- - Check file size before any Read operation
- - Extract patterns from 3-5 representative files
- - Use grep with line numbers for references
- - Leverage MCP summarizer for large content
- - Apply progressive summarization
- - Process files sequentially
- - Discard content immediately after extraction
- - 'Review file commit history before modifications: git log --oneline -5 <file_path>'
- - Write succinct commit messages explaining WHAT changed and WHY
- - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
- - 'When ''thorough'', ''reorganization'', or ''consolidate'' mentioned: perform comprehensive documentation restructuring'
- - Use git mv for all file moves to preserve version control history
- - Create README.md indexes in every documentation subdirectory
- - Update DOCUMENTATION_STATUS.md after any reorganization
- - Validate all cross-references and links after reorganization
- - Archive rather than delete - move outdated content to _archive/ with timestamp
- constraints:
- - Must use vector search before creating new documentation
- - Maximum 3-5 files without summarization
- - Files >100KB must use summarizer
- - Sequential processing only
- - Immediate content disposal required
- - Documentation must follow discovered patterns
- examples: []
+  domain_expertise:
+  - Semantic documentation discovery
+  - Vector search for pattern matching
+  - Memory-efficient documentation strategies
+  - Progressive summarization techniques
+  - Pattern extraction methods
+  - Technical writing standards
+  - API documentation patterns
+  - MCP summarizer integration
+  - Documentation consistency analysis
+  best_practices:
+  - generally use vector search before creating documentation
+  - Check project indexing status with get_project_status first
+  - Search for similar documentation patterns with search_code
+  - Understand documentation context with search_context
+  - Use search_similar to maintain consistency with existing docs
+  - Check file size before any Read operation
+  - Extract patterns from 3-5 representative files
+  - Use grep with line numbers for references
+  - Leverage MCP summarizer for large content
+  - Apply progressive summarization
+  - Process files sequentially
+  - Discard content immediately after extraction
+  - 'Review file commit history before modifications: git log --oneline -5 <file_path>'
+  - Write succinct commit messages explaining WHAT changed and WHY
+  - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
+  - 'When ''thorough'', ''reorganization'', or ''consolidate'' mentioned: perform comprehensive documentation restructuring'
+  - Use git mv for all file moves to preserve version control history
+  - Create README.md indexes in every documentation subdirectory
+  - Update DOCUMENTATION_STATUS.md after any reorganization
+  - Validate all cross-references and links after reorganization
+  - Archive rather than delete - move outdated content to _archive/ with timestamp
+  constraints:
+  - Must use vector search before creating new documentation
+  - Maximum 3-5 files without summarization
+  - Files >100KB must use summarizer
+  - Sequential processing only
+  - Immediate content disposal required
+  - Documentation must follow discovered patterns
+  examples: []
 interactions:
- input_format:
- required_fields:
- - task
- optional_fields:
- - context
- - constraints
- output_format:
- structure: markdown
- includes:
- - analysis
- - recommendations
- - code
- handoff_agents:
- - version_control
- triggers: []
+  input_format:
+    required_fields:
+    - task
+    optional_fields:
+    - context
+    - constraints
+  output_format:
+    structure: markdown
+    includes:
+    - analysis
+    - recommendations
+    - code
+  handoff_agents:
+  - version_control
+  triggers: []
 memory_routing:
- description: Stores writing standards, content organization patterns, documentation conventions, and semantic search patterns
- categories:
- - Semantic documentation discovery patterns
- - Writing standards and style guides
- - Content organization patterns
- - API documentation conventions
- - User guide templates
- - Documentation consistency patterns
- keywords:
- - document
- - documentation
- - readme
- - guide
- - manual
- - tutorial
- - explanation
- - specification
- - reference
- - glossary
- - examples
- - usage
- - howto
- - API docs
- - markdown
- - semantic search
- - vector search
- - pattern discovery
- - documentation consistency
- - reorganize
- - reorganization
- - consolidate
- - consolidation
- - restructure
- - archive
- - thorough
- - thorough reorganization
- - thorough cleanup
- - documentation organization
- - documentation structure
+  description: Stores writing standards, content organization patterns, documentation conventions, and semantic search patterns
+  categories:
+  - Semantic documentation discovery patterns
+  - Writing standards and style guides
+  - Content organization patterns
+  - API documentation conventions
+  - User guide templates
+  - Documentation consistency patterns
+  keywords:
+  - document
+  - documentation
+  - readme
+  - guide
+  - manual
+  - tutorial
+  - explanation
+  - specification
+  - reference
+  - glossary
+  - examples
+  - usage
+  - howto
+  - API docs
+  - markdown
+  - semantic search
+  - vector search
+  - pattern discovery
+  - documentation consistency
+  - reorganize
+  - reorganization
+  - consolidate
+  - consolidation
+  - restructure
+  - archive
+  - thorough
+  - thorough reorganization
+  - thorough cleanup
+  - documentation organization
+  - documentation structure
 ---
 
 # Documentation Agent

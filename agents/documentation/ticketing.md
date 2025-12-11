@@ -1,5 +1,5 @@
 ---
-name: Ticketing
+name: ticketing_agent
 description: Intelligent ticket management using mcp-ticketer MCP server (primary) with aitrackdown CLI fallback
 version: 2.7.0
 schema_version: 1.2.0
@@ -25,72 +25,72 @@ temperature: 0.2
 max_tokens: 8192
 timeout: 600
 capabilities:
-memory_limit: 1024
-cpu_limit: 20
-network_access: true
+  memory_limit: 1024
+  cpu_limit: 20
+  network_access: true
 dependencies:
-python:
-- click>=8.1.0
-- rich>=13.0.0
-- pyyaml>=6.0.0
-system:
-- python3
-- git
-optional: false
+  python:
+  - click>=8.1.0
+  - rich>=13.0.0
+  - pyyaml>=6.0.0
+  system:
+  - python3
+  - git
+  optional: false
 skills:
 - api-documentation
 - code-review
 - git-workflow
 knowledge:
-domain_expertise:
-- Agile project management
-- Issue tracking systems
-- Workflow optimization
-- Sprint planning
-- Ticket hierarchy design
-- Team velocity tracking
-- Release management
-- JIRA REST API v3
-- GitHub Issues API
-- Linear GraphQL API
-- API authentication patterns
-- Environment variable management
-best_practices:
-- Create clear, actionable tickets
-- Maintain proper ticket relationships
-- Use consistent labeling and components
-- Keep tickets updated with current status
-- Write comprehensive acceptance criteria
-- Link related tickets appropriately
-- Document decisions in ticket comments
-- 'Review file commit history before modifications: git log --oneline -5 <file_path>'
-- Write succinct commit messages explaining WHAT changed and WHY
-- 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
-constraints: []
-examples: []
+  domain_expertise:
+  - Agile project management
+  - Issue tracking systems
+  - Workflow optimization
+  - Sprint planning
+  - Ticket hierarchy design
+  - Team velocity tracking
+  - Release management
+  - JIRA REST API v3
+  - GitHub Issues API
+  - Linear GraphQL API
+  - API authentication patterns
+  - Environment variable management
+  best_practices:
+  - Create clear, actionable tickets
+  - Maintain proper ticket relationships
+  - Use consistent labeling and components
+  - Keep tickets updated with current status
+  - Write comprehensive acceptance criteria
+  - Link related tickets appropriately
+  - Document decisions in ticket comments
+  - 'Review file commit history before modifications: git log --oneline -5 <file_path>'
+  - Write succinct commit messages explaining WHAT changed and WHY
+  - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
+  constraints: []
+  examples: []
 interactions:
-input_format:
-required_fields:
-- task
-optional_fields:
-- context
-- ticket_type
-- priority
-- components
-output_format:
-structure: markdown
-includes:
-- ticket_summary
-- actions_taken
-- ticket_ids
-- workflow_status
-handoff_agents:
-- engineer
-- qa
-- documentation
-- ops
-- security
-triggers: []
+  input_format:
+    required_fields:
+    - task
+    optional_fields:
+    - context
+    - ticket_type
+    - priority
+    - components
+  output_format:
+    structure: markdown
+    includes:
+    - ticket_summary
+    - actions_taken
+    - ticket_ids
+    - workflow_status
+  handoff_agents:
+  - engineer
+  - qa
+  - documentation
+  - ops
+  - security
+  triggers: []
 ---
 
 # Ticketing Agent
