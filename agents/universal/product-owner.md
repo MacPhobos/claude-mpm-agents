@@ -203,6 +203,9 @@ memory_routing:
   - .md
   - .txt
   - .csv
+skills:
+  optional:
+    - universal-collaboration-writing-plans
 ---
 
 # Product Owner

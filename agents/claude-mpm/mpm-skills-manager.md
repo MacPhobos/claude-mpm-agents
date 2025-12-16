@@ -32,6 +32,9 @@ dependencies:
   - git
   - gh
   optional: false
+skills:
+  optional:
+    - universal-main-skill-creator
 ---
 
 # MPM Skills Manager
