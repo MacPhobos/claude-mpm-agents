@@ -10,9 +10,9 @@
     "file_size": 11163
   },
   "https://raw.githubusercontent.com/bobmatnyc/claude-mpm-agents/main/agents/claude-mpm/mpm-agent-manager.md": {
-    "etag": "W/\"7517a9ac616437e6847390531b3c41aa0c510b349d176053cd9a1ed8ca2a6a73\"",
-    "last_modified": "2025-12-20T16:15:43.570041+00:00",
-    "file_size": 47357
+    "etag": "W/\"277191ea3955a92e88b324355245c3a2367550034b8755a3d360ce83f0dd0b21\"",
+    "last_modified": "2025-12-20T19:09:35.601347+00:00",
+    "file_size": 64268
   },
   "https://raw.githubusercontent.com/bobmatnyc/claude-mpm-agents/main/agents/claude-mpm/mpm-skills-manager.md": {
     "etag": "W/\"e59d176057b2cc7894bf59cdaaef18029c353104472a425e519b492c4ae97d77\"",
@@ -228,5 +228,15 @@
     "etag": "W/\"ba8c263dd77269adc9d043af86aa2198710dd5e7f7bc137903b48579dd45a550\"",
     "last_modified": "2025-12-20T16:15:44.332729+00:00",
     "file_size": 47704
+  },
+  "https://raw.githubusercontent.com/bobmatnyc/claude-mpm-agents/main/agents/.etag-cache.json": {
+    "etag": "W/\"098100d6619749ed2d86c2d81dad62ae6a0d43a58713b158059fe0ba77cccdfb\"",
+    "last_modified": "2025-12-20T19:09:35.546307+00:00",
+    "file_size": 12917
+  },
+  "https://raw.githubusercontent.com/bobmatnyc/claude-mpm-agents/main/agents/universal/memory-manager-agent.md": {
+    "etag": "W/\"8407b4b097b53300442f71febcd5272c9afa34f50d12800217098b97b3f462c0\"",
+    "last_modified": "2025-12-20T19:09:36.331782+00:00",
+    "file_size": 19253
   }
 }
