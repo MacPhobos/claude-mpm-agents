@@ -5,7 +5,6 @@ version: 1.0.0
 schema_version: 1.3.0
 agent_id: tmux-agent
 agent_type: ops
-model: sonnet
 resource_tier: medium
 tags:
 - tmux

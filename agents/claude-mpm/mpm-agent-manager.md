@@ -1230,7 +1230,6 @@ When PM or other agents need information about agents, they should query YOU, no
 ---
 name: agent-name
 description: "Clear description with example usage..."
-model: sonnet|opus|haiku
 type: engineer|ops|research|qa|security|docs
 version: "X.Y.Z"
 ---
