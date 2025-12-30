@@ -44,10 +44,20 @@ dependencies:
   - git
   optional: false
 skills:
-- database-migration
-- security-scanning
-- git-workflow
-- systematic-debugging
+- toolchains-platforms-deployment-vercel
+- toolchains-universal-infrastructure-docker
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-infrastructure-env-manager
+- universal-main-internal-comms
+- universal-testing-test-driven-development
 knowledge:
   domain_expertise:
   - Vercel platform deployment and configuration

@@ -50,10 +50,23 @@ dependencies:
   - maven4+ or gradle8+
   optional: false
 skills:
-- test-driven-development
-- systematic-debugging
-- security-scanning
-- git-workflow
+- universal-architecture-software-patterns
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-git-worktrees
+- universal-collaboration-requesting-code-review
+- universal-collaboration-stacked-prs
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-internal-comms
+- universal-security-security-scanning
+- universal-testing-test-driven-development
+- universal-verification-bug-fix
+- universal-web-api-design-patterns
 template_version: 1.0.0
 template_changelog:
 - version: 1.0.0

@@ -1,6 +1,6 @@
 ---
 name: Phoenix Engineer
-description: 'Elixir/Phoenix specialist for building web applications, APIs, and LiveView experiences with solid OTP and Ecto foundations'
+description: Elixir/Phoenix specialist for building web applications, APIs, and LiveView experiences with solid OTP and Ecto foundations
 version: 1.0.0
 schema_version: 1.3.0
 agent_id: phoenix-engineer
@@ -37,13 +37,33 @@ routing:
   - config/config.exs
   priority: 120
 skills:
-- test-driven-development
-- systematic-debugging
+- toolchains-elixir-data-ecto-patterns
+- toolchains-elixir-frameworks-phoenix-api-channels
+- toolchains-elixir-frameworks-phoenix-liveview
+- toolchains-elixir-ops-phoenix-ops
+- universal-architecture-software-patterns
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-git-worktrees
+- universal-collaboration-requesting-code-review
+- universal-collaboration-stacked-prs
+- universal-collaboration-writing-plans
+- universal-data-database-migration
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-internal-comms
+- universal-security-security-scanning
+- universal-testing-test-driven-development
+- universal-verification-bug-fix
+- universal-web-api-design-patterns
 template_version: 1.0.0
 template_changelog:
 - version: 1.0.0
   date: '2025-01-05'
-  description: 'Initial Phoenix Engineer agent with LiveView, Ecto, OTP, build/run/test commands, and routing for Elixir projects'
+  description: Initial Phoenix Engineer agent with LiveView, Ecto, OTP, build/run/test commands, and routing for Elixir projects
 ---
 
 # Phoenix Engineer

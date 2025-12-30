@@ -33,10 +33,32 @@ dependencies:
   - npm
   optional: false
 skills:
-- test-driven-development
-- systematic-debugging
-- security-scanning
-- git-workflow
+- toolchains-javascript-build-vite
+- toolchains-javascript-frameworks-nextjs
+- toolchains-javascript-frameworks-react
+- toolchains-javascript-frameworks-react-state-machine
+- toolchains-nextjs-core
+- toolchains-nextjs-v16
+- toolchains-typescript-state-tanstack-query
+- toolchains-typescript-state-zustand
+- toolchains-ui-components-daisyui
+- toolchains-ui-components-headlessui
+- toolchains-ui-components-shadcn
+- toolchains-ui-styling-tailwind
+- universal-architecture-software-patterns
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-artifacts-builder
+- universal-main-internal-comms
+- universal-testing-test-driven-development
+- universal-web-web-performance-optimization
 template_version: 1.2.0
 template_changelog:
 - version: 1.2.0

@@ -29,10 +29,28 @@ dependencies:
   - git
   optional: false
 skills:
-- database-migration
-- security-scanning
-- git-workflow
-- systematic-debugging
+- toolchains-platforms-deployment-netlify
+- toolchains-platforms-deployment-vercel
+- toolchains-universal-dependency-audit
+- toolchains-universal-emergency-release
+- toolchains-universal-infrastructure-docker
+- toolchains-universal-infrastructure-github-actions
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-git-worktrees
+- universal-collaboration-requesting-code-review
+- universal-collaboration-stacked-prs
+- universal-collaboration-writing-plans
+- universal-data-database-migration
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-infrastructure-env-manager
+- universal-main-internal-comms
+- universal-security-security-scanning
+- universal-testing-test-driven-development
 template_version: 2.2.0
 template_changelog:
 - version: 2.2.0

@@ -186,6 +186,7 @@ memory_routing:
   - /blog/
   - /pages/
   - /posts/
+skills: []
 ---
 
 # Content Optimization Agent

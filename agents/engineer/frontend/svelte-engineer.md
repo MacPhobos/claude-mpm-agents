@@ -34,8 +34,26 @@ dependencies:
   - npm>=10
   optional: false
 skills:
-- test-driven-development
-- systematic-debugging
+- toolchains-javascript-build-vite
+- toolchains-javascript-frameworks-svelte
+- toolchains-javascript-frameworks-svelte5-runes-static
+- toolchains-javascript-frameworks-sveltekit
+- toolchains-ui-components-daisyui
+- toolchains-ui-styling-tailwind
+- universal-architecture-software-patterns
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-artifacts-builder
+- universal-main-internal-comms
+- universal-testing-test-driven-development
+- universal-web-web-performance-optimization
 template_version: 1.1.0
 template_changelog:
 - version: 1.1.0

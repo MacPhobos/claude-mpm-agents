@@ -18,121 +18,134 @@ temperature: 0.0
 max_tokens: 8192
 timeout: 600
 capabilities:
- memory_limit: 3072
- cpu_limit: 50
- network_access: true
+  memory_limit: 3072
+  cpu_limit: 50
+  network_access: true
 dependencies:
- python:
- - bandit>=1.7.5
- - detect-secrets>=1.4.0
- - sqlparse>=0.4.4
- - safety>=2.3.0
- - semgrep>=1.0.0
- - pyyaml>=6.0
- - jsonschema>=4.0.0
- - validators>=0.20.0
- system:
- - python3
- - git
- optional: false
+  python:
+  - bandit>=1.7.5
+  - detect-secrets>=1.4.0
+  - sqlparse>=0.4.4
+  - safety>=2.3.0
+  - semgrep>=1.0.0
+  - pyyaml>=6.0
+  - jsonschema>=4.0.0
+  - validators>=0.20.0
+  system:
+  - python3
+  - git
+  optional: false
 skills:
-- security-scanning
-- systematic-debugging
+- toolchains-universal-dependency-audit
+- toolchains-universal-security-api-review
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-infrastructure-env-manager
+- universal-main-internal-comms
+- universal-security-security-scanning
+- universal-testing-test-driven-development
 knowledge:
- domain_expertise:
- - OWASP security guidelines
- - Authentication/authorization patterns
- - Data protection and encryption
- - Vulnerability assessment techniques
- - Security compliance frameworks
- - SQL injection detection and prevention
- - Cross-site scripting (XSS) mitigation
- - Parameter validation and sanitization
- - Attack vector identification
- - Input validation frameworks
- best_practices:
- - Identify security vulnerabilities and risks
- - Design secure authentication flows
- - Assess data protection measures
- - Perform security-focused code review
- - Ensure compliance with security standards
- - Detect and prevent SQL injection attacks
- - Validate and sanitize all user inputs
- - Identify common attack vectors (XSS, CSRF, XXE)
- - Implement parameter type and range validation
- - Review code for insecure deserialization
- - 'Review file commit history before modifications: git log --oneline -5 <file_path>'
- - Write succinct commit messages explaining WHAT changed and WHY
- - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
- constraints: []
- examples: []
+  domain_expertise:
+  - OWASP security guidelines
+  - Authentication/authorization patterns
+  - Data protection and encryption
+  - Vulnerability assessment techniques
+  - Security compliance frameworks
+  - SQL injection detection and prevention
+  - Cross-site scripting (XSS) mitigation
+  - Parameter validation and sanitization
+  - Attack vector identification
+  - Input validation frameworks
+  best_practices:
+  - Identify security vulnerabilities and risks
+  - Design secure authentication flows
+  - Assess data protection measures
+  - Perform security-focused code review
+  - Ensure compliance with security standards
+  - Detect and prevent SQL injection attacks
+  - Validate and sanitize all user inputs
+  - Identify common attack vectors (XSS, CSRF, XXE)
+  - Implement parameter type and range validation
+  - Review code for insecure deserialization
+  - 'Review file commit history before modifications: git log --oneline -5 <file_path>'
+  - Write succinct commit messages explaining WHAT changed and WHY
+  - 'Follow conventional commits format: feat/fix/docs/refactor/perf/test/chore'
+  constraints: []
+  examples: []
 interactions:
- input_format:
- required_fields:
- - task
- optional_fields:
- - context
- - constraints
- output_format:
- structure: markdown
- includes:
- - analysis
- - recommendations
- - code
- handoff_agents:
- - engineer
- - ops
- triggers: []
+  input_format: null
+  required_fields:
+  - task
+  optional_fields:
+  - context
+  - constraints
+  output_format: null
+  structure: markdown
+  includes:
+  - analysis
+  - recommendations
+  - code
+  handoff_agents:
+  - engineer
+  - ops
+  triggers: []
 memory_routing:
- description: Stores security patterns, threat models, attack vectors, and compliance requirements
- categories:
- - Security patterns and vulnerabilities
- - Threat models and attack vectors
- - Compliance requirements and policies
- - Authentication/authorization patterns
- - SQL injection and database attacks
- - Cross-site scripting (XSS) patterns
- - Input validation and sanitization
- - Parameter type validation
- - Command injection vulnerabilities
- - Path traversal and file upload attacks
- keywords:
- - security
- - authentication
- - authorization
- - encryption
- - vulnerability
- - exploit
- - threat
- - attack
- - access control
- - permissions
- - compliance
- - privacy
- - data protection
- - sensitive data
- - OWASP
- - CVE
- - SQL injection
- - XSS
- - CSRF
- - XXE
- - command injection
- - path traversal
- - LDAP injection
- - NoSQL injection
- - SSRF
- - deserialization
- - parameter validation
- - input sanitization
- - type checking
- - range validation
- - whitelist
- - blacklist
- - IDOR
- - JWT
- - session management
- - privilege escalation
+  description: Stores security patterns, threat models, attack vectors, and compliance requirements
+  categories:
+  - Security patterns and vulnerabilities
+  - Threat models and attack vectors
+  - Compliance requirements and policies
+  - Authentication/authorization patterns
+  - SQL injection and database attacks
+  - Cross-site scripting (XSS) patterns
+  - Input validation and sanitization
+  - Parameter type validation
+  - Command injection vulnerabilities
+  - Path traversal and file upload attacks
+  keywords:
+  - security
+  - authentication
+  - authorization
+  - encryption
+  - vulnerability
+  - exploit
+  - threat
+  - attack
+  - access control
+  - permissions
+  - compliance
+  - privacy
+  - data protection
+  - sensitive data
+  - OWASP
+  - CVE
+  - SQL injection
+  - XSS
+  - CSRF
+  - XXE
+  - command injection
+  - path traversal
+  - LDAP injection
+  - NoSQL injection
+  - SSRF
+  - deserialization
+  - parameter validation
+  - input sanitization
+  - type checking
+  - range validation
+  - whitelist
+  - blacklist
+  - IDOR
+  - JWT
+  - session management
+  - privilege escalation
 ---
 
 <!-- MEMORY WARNING: Extract and summarize immediately, never retain full file contents -->

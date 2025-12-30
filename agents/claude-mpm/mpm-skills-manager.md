@@ -31,6 +31,22 @@ dependencies:
   - git
   - gh
   optional: false
+skills:
+- examples-bad-interdependent-skill
+- examples-good-self-contained-skill
+- toolchains-ai-protocols-mcp
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-internal-comms
+- universal-main-skill-creator
+- universal-testing-test-driven-development
 ---
 
 # MPM Skills Manager

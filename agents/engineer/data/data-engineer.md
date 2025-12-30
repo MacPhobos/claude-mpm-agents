@@ -62,10 +62,37 @@ dependencies:
   - git
   optional: false
 skills:
-- test-driven-development
-- systematic-debugging
-- security-scanning
-- git-workflow
+- toolchains-ai-frameworks-dspy
+- toolchains-ai-frameworks-langchain
+- toolchains-ai-frameworks-langgraph
+- toolchains-platforms-backend-supabase
+- toolchains-platforms-database-neon
+- toolchains-python-async-asyncio
+- toolchains-python-async-celery
+- toolchains-python-data-sqlalchemy
+- toolchains-python-frameworks-django
+- toolchains-python-testing-pytest
+- toolchains-python-tooling-mypy
+- toolchains-python-tooling-pyright
+- toolchains-python-validation-pydantic
+- toolchains-typescript-data-drizzle
+- toolchains-typescript-data-drizzle-migrations
+- toolchains-typescript-data-kysely
+- toolchains-typescript-data-prisma
+- universal-architecture-software-patterns
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-database-migration
+- universal-data-json-data-handling
+- universal-data-xlsx
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-internal-comms
+- universal-testing-test-driven-development
 knowledge:
   domain_expertise:
   - Python data transformation and scripting

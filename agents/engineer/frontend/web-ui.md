@@ -43,11 +43,7 @@ dependencies:
   - lighthouse
   - axe-core
   optional: true
-skills:
-- test-driven-development
-- systematic-debugging
-- security-scanning
-- git-workflow
+skills: []
 knowledge:
   domain_expertise:
   - HTML5 semantic markup and web standards

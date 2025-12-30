@@ -30,10 +30,17 @@ dependencies:
   - git
   optional: false
 skills:
-- database-migration
-- security-scanning
-- git-workflow
-- systematic-debugging
+- universal-collaboration-brainstorming
+- universal-collaboration-dispatching-parallel-agents
+- universal-collaboration-git-workflow
+- universal-collaboration-requesting-code-review
+- universal-collaboration-writing-plans
+- universal-data-json-data-handling
+- universal-debugging-root-cause-tracing
+- universal-debugging-systematic-debugging
+- universal-debugging-verification-before-completion
+- universal-main-internal-comms
+- universal-testing-test-driven-development
 template_version: 0.0.7
 template_changelog:
 - version: 0.0.7
