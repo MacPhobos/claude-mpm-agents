@@ -56,24 +56,24 @@ dependencies:
   - mcp-browser
   optional: false
 skills:
-- toolchains-javascript-testing-playwright
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-condition-based-waiting
-- universal-testing-test-driven-development
-- universal-testing-test-quality-inspector
-- universal-testing-testing-anti-patterns
-- universal-testing-webapp-testing
-- universal-verification-screenshot
-- universal-web-web-performance-optimization
+- playwright
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- condition-based-waiting
+- test-driven-development
+- test-quality-inspector
+- testing-anti-patterns
+- webapp-testing
+- screenshot-verification
+- web-performance-optimization
 knowledge:
   domain_expertise:
   - UAT (User Acceptance Testing) methodology and best practices

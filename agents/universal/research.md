@@ -50,26 +50,26 @@ dependencies:
   - git
   optional: false
 skills:
-- toolchains-ai-frameworks-dspy
-- toolchains-ai-frameworks-langchain
-- toolchains-ai-frameworks-langgraph
-- toolchains-ai-protocols-mcp
-- toolchains-ai-sdks-anthropic
-- toolchains-ai-services-openrouter
-- toolchains-ai-techniques-session-compression
-- universal-architecture-software-patterns
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-main-skill-creator
-- universal-testing-test-driven-development
+- dspy
+- langchain
+- langgraph
+- mcp
+- anthropic-sdk
+- openrouter
+- session-compression
+- software-patterns
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- skill-creator
+- test-driven-development
 template_version: 2.9.0
 template_changelog:
 - version: 2.9.0

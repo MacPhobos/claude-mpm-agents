@@ -14,20 +14,20 @@ tags:
 - monitoring
 category: operations
 skills:
-- toolchains-platforms-deployment-netlify
-- toolchains-universal-infrastructure-docker
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-infrastructure-env-manager
-- universal-main-internal-comms
-- universal-testing-test-driven-development
+- netlify
+- docker
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- env-manager
+- internal-comms
+- test-driven-development
 knowledge:
   best_practices:
   - 'Review file commit history before modifications: git log --oneline -5 <file_path>'

@@ -36,17 +36,17 @@ dependencies:
   - git
   optional: false
 skills:
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-test-driven-development
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- test-driven-development
 template_version: 2.3.0
 template_changelog:
 - version: 2.3.0

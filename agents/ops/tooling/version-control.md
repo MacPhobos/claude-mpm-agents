@@ -33,23 +33,23 @@ dependencies:
   - git
   optional: false
 skills:
-- toolchains-universal-emergency-release
-- toolchains-universal-infrastructure-github-actions
-- toolchains-universal-pr-quality
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-git-worktrees
-- universal-collaboration-requesting-code-review
-- universal-collaboration-stacked-prs
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-test-driven-development
-- universal-verification-pre-merge
+- emergency-release-workflow
+- github-actions
+- pr-quality-checklist
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- git-worktrees
+- requesting-code-review
+- stacked-prs
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- test-driven-development
+- pre-merge-verification
 knowledge:
   domain_expertise:
   - Git workflows and best practices

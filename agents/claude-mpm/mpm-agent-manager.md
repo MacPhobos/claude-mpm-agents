@@ -32,19 +32,19 @@ dependencies:
   - gh
   optional: false
 skills:
-- toolchains-ai-protocols-mcp
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-main-mcp-builder
-- universal-testing-test-driven-development
+- mcp
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- mcp-builder
+- test-driven-development
 ---
 
 # MPM Agent Manager

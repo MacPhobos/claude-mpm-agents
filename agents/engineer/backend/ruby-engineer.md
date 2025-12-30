@@ -34,22 +34,22 @@ dependencies:
   - bundler>=2.5
   optional: false
 skills:
-- universal-architecture-software-patterns
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-git-worktrees
-- universal-collaboration-requesting-code-review
-- universal-collaboration-stacked-prs
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-security-security-scanning
-- universal-testing-test-driven-development
-- universal-verification-bug-fix
+- software-patterns
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- git-worktrees
+- requesting-code-review
+- stacked-prs
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- security-scanning
+- test-driven-development
+- bug-fix-verification
 template_version: 2.0.0
 template_changelog:
 - version: 2.0.0

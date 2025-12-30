@@ -33,19 +33,19 @@ dependencies:
   - node>=18
   optional: false
 skills:
-- toolchains-rust-desktop-applications
-- toolchains-rust-frameworks-tauri
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-test-driven-development
+- desktop-applications
+- tauri
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- test-driven-development
 template_version: 1.0.0
 template_changelog:
 - version: 1.0.0

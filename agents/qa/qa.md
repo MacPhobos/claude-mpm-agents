@@ -37,25 +37,25 @@ dependencies:
   - git
   optional: false
 skills:
-- toolchains-universal-pr-quality
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-condition-based-waiting
-- universal-testing-test-driven-development
-- universal-testing-test-quality-inspector
-- universal-testing-testing-anti-patterns
-- universal-testing-webapp-testing
-- universal-verification-bug-fix
-- universal-verification-pre-merge
-- universal-verification-screenshot
+- pr-quality-checklist
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- condition-based-waiting
+- test-driven-development
+- test-quality-inspector
+- testing-anti-patterns
+- webapp-testing
+- bug-fix-verification
+- pre-merge-verification
+- screenshot-verification
 template_version: 2.1.0
 template_changelog:
 - version: 2.1.0

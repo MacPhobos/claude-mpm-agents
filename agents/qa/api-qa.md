@@ -37,24 +37,24 @@ dependencies:
   - jq
   optional: false
 skills:
-- toolchains-universal-data-graphql
-- toolchains-universal-security-api-review
-- universal-collaboration-brainstorming
-- universal-collaboration-dispatching-parallel-agents
-- universal-collaboration-git-workflow
-- universal-collaboration-requesting-code-review
-- universal-collaboration-writing-plans
-- universal-data-json-data-handling
-- universal-debugging-root-cause-tracing
-- universal-debugging-systematic-debugging
-- universal-debugging-verification-before-completion
-- universal-main-internal-comms
-- universal-testing-condition-based-waiting
-- universal-testing-test-driven-development
-- universal-testing-test-quality-inspector
-- universal-testing-testing-anti-patterns
-- universal-web-api-design-patterns
-- universal-web-api-documentation
+- graphql
+- api-security-review
+- brainstorming
+- dispatching-parallel-agents
+- git-workflow
+- requesting-code-review
+- writing-plans
+- json-data-handling
+- root-cause-tracing
+- systematic-debugging
+- verification-before-completion
+- internal-comms
+- condition-based-waiting
+- test-driven-development
+- test-quality-inspector
+- testing-anti-patterns
+- api-design-patterns
+- api-documentation
 knowledge:
   domain_expertise:
   - REST API testing
