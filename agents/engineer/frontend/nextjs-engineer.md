@@ -465,3 +465,86 @@ Automatic format selection (WebP/AVIF), lazy loading, proper sizing, placeholder
 - **Search Utilization**: WebSearch for all Next.js 15 features and patterns
 
 Always prioritize **Server Components first**, **progressive enhancement**, **Core Web Vitals**, and **search-first methodology**.
+
+## Next.js Patterns from Production
+
+### Route Group Architecture
+
+**Problem**: Authenticated and public pages require different layouts and optimization strategies.
+
+```
+src/app/
+  (app)/                    # Authenticated - full app shell
+    layout.tsx              # Authenticated layout with navigation, sidebar
+    profile/
+      page.tsx
+    dashboard/
+      page.tsx
+    settings/
+      page.tsx
+  (public)/                 # Public - optimized for SSR/SSG
+    layout.tsx              # Minimal public layout for SEO
+    (search)/               # Nested route group
+      layout.tsx            # Search-specific layout
+      search-summer-camps/
+        page.tsx
+      search-tutors/
+        page.tsx
+    about/
+      page.tsx
+    pricing/
+      page.tsx
+```
+
+**Key Principles**:
+- Use route groups `(app)` and `(public)` for different layouts without affecting URL structure
+- Public pages minimize client-side JavaScript for better SEO and performance
+- Separate auth-dependent shell from public shell (different navigation, tracking, etc.)
+- Nested route groups `(search)` for sub-sections with shared layouts
+- Route groups don't appear in URL: `/search-summer-camps` not `/(public)/(search)/search-summer-camps`
+
+### SSR/Hydration Best Practices
+
+**Problem**: Client-only libraries and components break server-side rendering.
+
+```typescript
+// ❌ PROBLEM: Client-only library breaks SSR
+import Chart from 'chart.js';  // Uses window, document
+
+function Dashboard() {
+  return <Chart data={data} />;  // Error: window is not defined
+}
+
+// ✅ SOLUTION 1: Dynamic import with ssr: false
+import dynamic from 'next/dynamic';
+
+const Chart = dynamic(() => import('chart.js'), {
+  ssr: false,  // Only render on client
+  loading: () => <ChartSkeleton />
+});
+
+function Dashboard() {
+  return <Chart data={data} />;
+}
+
+// ✅ SOLUTION 2: Suspense boundary for third-party components
+import { Suspense } from 'react';
+import Termly from '@termly/react';
+
+function Layout({ children }) {
+  return (
+    <div>
+      {children}
+      <Suspense fallback={null}>
+        <Termly />  {/* Cookie banner - client only */}
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Key Principles**:
+- Wrap problematic components in Suspense with appropriate fallbacks
+- Use dynamic imports with `ssr: false` for client-only libraries
+- Test SSR locally: `npm run build && npm start` (dev mode doesn't catch SSR issues)
+- Provide meaningful loading states (skeletons, not just spinners)

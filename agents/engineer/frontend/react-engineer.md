@@ -266,3 +266,129 @@ CI=true npm test -- --coverage || npx vitest run --coverage
 - **With UI/UX**: Component design, user experience patterns
 - **With DevOps**: Build optimization, bundle analysis
 - **With Backend**: API integration, data fetching patterns
+
+## React Patterns from Production
+
+### Render Loop Prevention
+
+**Problem**: Duplicate state management and unnecessary callbacks cause infinite render loops.
+
+```typescript
+// ❌ PROBLEM: Duplicate state management causing infinite loops
+function SearchFilter({ filters, onChange }) {
+  const [localFilters, setLocalFilters] = useState(filters);
+
+  useEffect(() => {
+    if (onChange) onChange(filters);  // Parent re-renders → new props → effect runs again
+  }, [filters, onChange]);            // onChange reference changes every render
+
+  // Result: Infinite loop - child updates parent, parent re-renders child
+}
+
+// ✅ SOLUTION: Remove redundant callbacks, use explicit handlers
+function SearchFilter({ filters, onApplyResults }) {
+  const [localFilters, setLocalFilters] = useState(filters);
+
+  const handleApply = () => {
+    onApplyResults(localFilters);  // Called on button click only, no automatic effects
+  };
+
+  return (
+    <div>
+      <input value={localFilters.query} onChange={e => setLocalFilters({...localFilters, query: e.target.value})} />
+      <button onClick={handleApply}>Apply</button>
+    </div>
+  );
+}
+```
+
+**Key Principles**:
+- Be suspicious of `useEffect` that fires on every state change
+- Prefer explicit callbacks (onClick) over implicit ones (useEffect)
+- Check for circular dependencies: state → effect → callback → parent re-render → new props → effect
+- Use `useCallback` or stable references for callbacks passed to effects
+
+### Component Composability Pattern
+
+**Problem**: Large monolithic components become unmaintainable and hard to test.
+
+```
+src/modules/
+  form/
+    MultiSelect.tsx      # Generic building blocks
+    SingleSelect.tsx     # Reusable across domains
+    TextInput.tsx
+  search/
+    SearchBar.tsx        # Domain-specific composition
+    SearchOption.tsx     # Uses form/* building blocks
+    SearchFilters.tsx
+  date/
+    DateRangePicker.tsx  # Composed from DateInput
+    DateInput.tsx
+```
+
+**Key Principles**:
+- Break large components into domain-organized modules
+- Create generic building blocks first (form primitives, layout components)
+- Compose domain-specific components from generic ones (SearchBar uses MultiSelect)
+- Delete old implementations after successful refactor (don't keep both versions)
+- One module = one responsibility (form inputs, search functionality, date handling)
+
+**Example**:
+```typescript
+// Generic building block
+export function MultiSelect<T>({ options, value, onChange, renderOption }: Props<T>) {
+  // Reusable logic
+}
+
+// Domain-specific composition
+export function ProgramSearch() {
+  return (
+    <SearchBar>
+      <MultiSelect
+        options={programs}
+        value={selectedPrograms}
+        onChange={handleProgramChange}
+        renderOption={program => <ProgramOption {...program} />}
+      />
+    </SearchBar>
+  );
+}
+```
+
+### Suspense for Third-Party Scripts
+
+**Problem**: Third-party scripts (analytics, cookie banners) break server-side rendering (SSR).
+
+```typescript
+// ❌ PROBLEM: Third-party script breaks SSR
+import Termly from '@termly/react';
+
+function App() {
+  return (
+    <div>
+      <Termly />  {/* Error: window is not defined (SSR) */}
+    </div>
+  );
+}
+
+// ✅ SOLUTION: Wrap in Suspense boundary with fallback
+import { Suspense } from 'react';
+import Termly from '@termly/react';
+
+function App() {
+  return (
+    <div>
+      <Suspense fallback={null}>
+        <Termly />  {/* Only renders on client */}
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Key Principles**:
+- Third-party scripts (analytics, cookie banners, chat widgets) often break SSR
+- Wrap in Suspense boundaries with appropriate fallbacks (`null` for invisible widgets, skeleton for visible ones)
+- Use dynamic imports for heavy third-party libraries: `const Component = dynamic(() => import('library'), { ssr: false })`
+- Test SSR locally: `npm run build && npm start` (not just dev mode)

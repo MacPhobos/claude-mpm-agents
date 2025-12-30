@@ -573,3 +573,98 @@ lighthouse https://your-app.com --view
 - **Search Utilization**: WebSearch for all medium-complex problems
 
 Always prioritize **search-first**, **strict type safety**, **branded types for domain safety**, and **measurable performance**.
+
+## TypeScript Patterns from Production
+
+### Generic Component Patterns
+
+**Problem**: Arrow functions with generics cause JSX compatibility issues in TypeScript.
+
+```typescript
+// ❌ AVOID: Arrow functions with generics cause JSX compatibility issues
+export const Component = <T extends unknown>({ ... }: Props<T>) => {
+  return <div>...</div>;
+};
+// TypeScript may interpret <T extends unknown> as JSX tag in .tsx files
+
+// ✅ PREFER: Function declarations with generics
+export function Component<T>({ value, onChange }: Props<T>) {
+  return <div>{value}</div>;
+}
+// Clear function declaration, no JSX ambiguity
+```
+
+**Key Principles**:
+- Use function declarations for generic React components, not arrow functions
+- Use simple `<T>` not `<T extends unknown>` (cleaner, less verbose)
+- Export function declarations directly: `export function Component<T>(...)`
+
+### JSONB Type Safety (Drizzle ORM)
+
+**Problem**: JSONB columns in databases lack type safety without explicit interfaces.
+
+```typescript
+// ✅ PREFER: Strongly typed with explicit interfaces
+import { jsonb } from 'drizzle-orm/pg-core';
+
+pricingOverrides: jsonb('pricing_overrides').$type<PricingOverrides>()
+
+export interface PricingOverrides {
+  amount: number | null;
+  unit: PricingUnit;
+  type: PricingType;
+}
+
+export type PricingUnit = 'month' | 'week' | 'day' | 'session';
+export type PricingType = 'fixed' | 'variable' | 'tiered';
+
+// Usage with full type safety
+const pricing: PricingOverrides = {
+  amount: 100,
+  unit: 'month', // Autocomplete works
+  type: 'fixed'  // Type checking enforced
+};
+```
+
+**Key Principles**:
+- Always create explicit interfaces for JSONB columns (no implicit `any`)
+- Use discriminated unions for enum-like fields (PricingUnit, PricingType)
+- Export reusable types for consistency across codebase
+- Leverage `.$type<T>()` method in Drizzle for compile-time safety
+
+### Validation Utility Extraction
+
+**Problem**: Repeated validation patterns (query param arrays, number coercion) duplicated across codebase.
+
+```typescript
+// ✅ PREFER: Reusable Zod utilities
+import { z } from 'zod';
+
+// Generic array parser handling edge cases
+export const queryParamArray = <T extends z.ZodTypeAny>(schema: z.ZodArray<T>) =>
+  z.preprocess((val) => {
+    if (Array.isArray(val)) return val;              // Already array
+    if (typeof val === 'string') {
+      return val.length > 0 ? val.split(',') : [];   // Empty string → []
+    }
+    return [];                                        // null, undefined → []
+  }, schema);
+
+// Specialized number array parser
+export const queryParamNumberArray = () =>
+  queryParamArray(z.array(z.coerce.number()));
+
+// Usage across codebase
+const searchSchema = z.object({
+  tags: queryParamNumberArray(),         // "1,2,3" → [1, 2, 3]
+  categories: queryParamNumberArray(),   // "" → []
+  ids: queryParamArray(z.array(z.string().uuid()))  // Reusable pattern
+});
+```
+
+**Key Principles**:
+- Extract repeated validation patterns into reusable utilities
+- Handle edge cases: empty strings → [], null/undefined → []
+- Use `z.preprocess` for input normalization before validation
+- Create specialized utilities (queryParamNumberArray) from generic ones
+- Export utilities for consistent validation across API endpoints

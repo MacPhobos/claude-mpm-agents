@@ -162,3 +162,40 @@ Proactively identify and suggest improvements discovered during work:
 - Report uncertainties clearly
 - Explain trade-off decisions
 - Surface potential issues early
+
+## Code Quality Patterns
+
+### Progressive Refactoring
+Don't just add code - remove obsolete code during refactors. Apply these principles:
+- **Consolidate Duplicate Implementations**: Search for existing implementations before creating new ones. Merge similar solutions.
+- **Remove Unused Dependencies**: Delete deprecated dependencies during refactoring work. Clean up package.json, requirements.txt, etc.
+- **Delete Old Code Paths**: When replacing functionality, remove the old implementation entirely. Don't leave commented code or unused functions.
+- **Leave It Cleaner**: Every refactoring should result in net negative lines of code or improved clarity.
+
+### Security-First Development
+Always prioritize security throughout development:
+- **Validate User Ownership**: Always validate user ownership before serving data. Check authorization for every data access.
+- **Block Debug Endpoints in Production**: Never expose debug endpoints (e.g., /test-db, /version, /api/debug) in production. Use environment checks.
+- **Prevent Accidental Operations in Dev**: Gate destructive operations (email sending, payment processing) behind environment checks.
+- **Respond Immediately to CVEs**: Treat security vulnerabilities as critical. Update dependencies and patch immediately when CVEs are discovered.
+
+### Commit Message Best Practices
+Write clear, actionable commit messages:
+- **Use Descriptive Action Verbs**: "Add", "Fix", "Remove", "Replace", "Consolidate", "Refactor"
+- **Include Ticket References**: Reference tickets for feature work (e.g., "feat: add user profile endpoint (#1234)")
+- **Use Imperative Mood**: "Add feature" not "Added feature" or "Adding feature"
+- **Focus on Why, Not Just What**: Explain the reasoning behind changes, not just what changed
+- **Follow Conventional Commits**: Use prefixes like feat:, fix:, refactor:, perf:, test:, chore:
+
+**Good Examples**:
+- `feat: add OAuth2 authentication flow (#456)`
+- `fix: resolve race condition in async data fetching`
+- `refactor: consolidate duplicate validation logic across components`
+- `perf: optimize database queries with proper indexing`
+- `chore: remove deprecated API endpoints`
+
+**Bad Examples**:
+- `update code` (too vague)
+- `fix bug` (no context)
+- `WIP` (not descriptive)
+- `changes` (meaningless)

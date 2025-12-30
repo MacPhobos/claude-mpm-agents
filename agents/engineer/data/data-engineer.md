@@ -570,3 +570,132 @@ Never use generic todos
 - **Validation**: Data integrity and quality checks
 - **ETL**: Extract, transform, load pipelines
 - **Integration**: API and database integrations
+
+## Drizzle ORM Patterns from Production
+
+### Migration Workflow
+
+**Standard Migration Process**:
+1. Define schema changes in Drizzle TypeScript schema (source of truth)
+2. Generate migration: `drizzle-kit generate`
+3. Review generated SQL for correctness (check indexes, constraints, data types)
+4. Use named migrations for clarity: `drizzle-kit generate:add-user-verified-column`
+5. Test on clean database before production
+6. Squash related migrations before final merge (keep history clean)
+
+### Migration Conflict Resolution
+
+When encountering migration conflicts (common in team environments):
+
+```bash
+# 1. Check for duplicate migration numbers
+ls drizzle/*.sql
+# Output: 0001_initial.sql, 0001_add_users.sql  ← CONFLICT!
+
+# 2. Renumber migrations sequentially
+mv drizzle/0001_add_users.sql drizzle/0002_add_users.sql
+
+# 3. Update drizzle/meta/_journal.json
+# Change migration number references from 0001 to 0002
+
+# 4. Validate schema consistency
+drizzle-kit check
+
+# 5. Test migration on fresh database
+dropdb testdb && createdb testdb && drizzle-kit push
+```
+
+**Key Principles**:
+- Migration numbers must be sequential and unique
+- Always update `_journal.json` when renumbering
+- Use `drizzle-kit check` to validate schema consistency
+- Test on fresh database to catch issues early
+
+### Backwards Compatibility for Table Migrations
+
+**Expand-Contract Pattern for Zero-Downtime Migrations**:
+
+```typescript
+// Phase 1: EXPAND - Add new schema alongside old
+// Migration 1: Add new column (nullable)
+await db.schema.alterTable('users')
+  .addColumn('email_verified', 'boolean', col => col.defaultTo(false))
+  .execute();
+
+// Phase 2: DUAL-WRITE - Write to both old and new
+// Application code writes to both schemas during transition
+async function updateUser(userId: string, data: UserUpdate) {
+  await db.update(users)
+    .set({
+      // Old fields
+      verified: data.verified,
+      // New fields (dual write)
+      email_verified: data.verified
+    })
+    .where(eq(users.id, userId));
+}
+
+// Phase 3: MIGRATE - Backfill existing data
+await db.update(users)
+  .set({ email_verified: db.raw('verified') })  // Copy old to new
+  .where(isNull(users.email_verified));
+
+// Phase 4: SWITCH READS - Read from new schema
+// Update queries to use email_verified instead of verified
+
+// Phase 5: CONTRACT - Remove old schema (only after validation)
+// Migration 2: Drop old column
+await db.schema.alterTable('users')
+  .dropColumn('verified')
+  .execute();
+```
+
+**Key Principles**:
+1. Create new schema alongside old (dual support)
+2. Implement dual-write during transition period
+3. Migrate data incrementally (avoid long-running transactions)
+4. Switch reads to new schema after validation
+5. Remove old schema only after complete migration and validation
+6. Keep migration reversible (maintain rollback capability)
+
+### Type-Safe Union Queries
+
+**Problem**: Combining multiple query results with type safety in Drizzle.
+
+```typescript
+import { union } from 'drizzle-orm/pg-core';
+
+// ✅ CORRECT: Use Drizzle's union() for combining queries
+async function getProviderIds(email: string): Promise<number[]> {
+  const query = union(
+    // Query 1: Direct provider ownership
+    db.select({ providerId: providerTable.id })
+      .from(userTable)
+      .innerJoin(providerTable, eq(userTable.email, providerTable.email))
+      .where(eq(userTable.email, email)),
+
+    // Query 2: Provider owner assignments
+    db.select({ providerId: providerOwnerAssignmentsTable.providerId })
+      .from(userTable)
+      .innerJoin(providerOwnersTable, eq(userTable.email, providerOwnersTable.email))
+      .where(eq(userTable.email, email))
+  );
+
+  const results = await query;
+  return results.map(row => row.providerId);  // Type-safe: number[]
+}
+
+// ❌ AVOID: Raw SQL loses type safety
+const results = await db.execute(sql`
+  SELECT provider_id FROM ...
+  UNION
+  SELECT provider_id FROM ...
+`);
+// returns: any[] - no type safety
+```
+
+**Key Principles**:
+- Use Drizzle's `union()` for combining queries (not raw SQL)
+- Return strongly typed results: `Promise<number[]>` not `Promise<any[]>`
+- Ensure both queries return same column structure for union compatibility
+- Leverage TypeScript inference for compile-time safety

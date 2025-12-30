@@ -740,3 +740,149 @@ Security analysis todos should specify expected outputs:
 - Include risk assessment and remediation timeline in handoff communications
 - Reference specific security standards and compliance requirements
 - Update todos immediately when security sign-off is provided to other agents
+
+## Security Patterns from Production
+
+### Ownership Validation Pattern
+
+**Problem**: Unauthorized data access when ownership is not validated at the API level.
+
+```typescript
+// 1. Get user's authorized IDs (ownership check)
+async function getProviderIds(userEmail: string): Promise<number[]> {
+  const isAdmin = await checkAdminRole(userEmail);
+
+  if (isAdmin) {
+    // Admin sees all - bypass ownership filtering
+    const allProviders = await db.select({ id: providerTable.id }).from(providerTable);
+    return allProviders.map(p => p.id);
+  }
+
+  // Regular user - return only owned/assigned providers
+  const providerIds = await db.select({ id: providerTable.id })
+    .from(providerTable)
+    .where(eq(providerTable.ownerEmail, userEmail));
+
+  return providerIds.map(p => p.id);
+}
+
+// 2. Validate access before serving data
+export async function GET(request: NextRequest) {
+  const user = await getAuthenticatedUser(request);
+  const providerIds = await getProviderIds(user.email);
+  const isAdmin = !!user.publicMetadata?.adminRole;
+
+  // 3. No authorized IDs = unauthorized
+  if (!providerIds.length && !isAdmin) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  // 4. Filter queries by ownership
+  const data = await db.select().from(programsTable).where(
+    isAdmin
+      ? eq(programsTable.id, id)  // Admin sees all
+      : and(
+          eq(programsTable.id, id),
+          inArray(programsTable.providerId, providerIds)  // User sees only owned
+        )
+  );
+
+  return NextResponse.json(data);
+}
+```
+
+**Key Principles**:
+- Always validate user ownership before serving data
+- Implement dual-path logic: admin bypass + ownership checks
+- Fail closed: no ownership = 401 Unauthorized (don't serve empty data)
+- Use database-level filtering (WHERE clause), not application-level filtering after fetch
+
+### Environment-Specific Protection
+
+**Problem**: Debug endpoints and test operations exposed in production environments.
+
+```typescript
+// ❌ VULNERABLE: Debug endpoint accessible in production
+export async function GET(request: NextRequest) {
+  const dbStatus = await db.raw('SELECT version()');
+  return NextResponse.json({ status: 'ok', db: dbStatus });
+}
+
+// ✅ SECURE: Block debug endpoints in production
+export async function GET(request: NextRequest) {
+  // Environment check at handler entry
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json(
+      { error: 'Not Found' },
+      { status: 404 }
+    );
+  }
+
+  const dbStatus = await db.raw('SELECT version()');
+  return NextResponse.json({ status: 'ok', db: dbStatus });
+}
+
+// ✅ SECURE: Prevent accidental operations in dev
+async function sendEmail(to: string, subject: string, body: string) {
+  // Guard against accidental emails in development
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('[DEV] Email not sent:', { to, subject });
+    return { success: true, message: 'Skipped in development' };
+  }
+
+  // Production: actually send email
+  return await emailService.send({ to, subject, body });
+}
+```
+
+**Key Principles**:
+- Block debug endpoints in production: `/test-db`, `/version`, `/api/debug`
+- Prevent accidental operations in dev: check `process.env.NODE_ENV` before sending emails, charging cards, etc.
+- Gate destructive operations behind admin checks AND environment checks
+- Return 404 (not 403) for hidden endpoints to avoid information disclosure
+
+### Data Sanitization
+
+**Problem**: External API data or user input contains invalid/malicious data.
+
+```typescript
+// ❌ VULNERABLE: Direct insertion of external data
+async function importPrograms(externalData: any[]) {
+  await db.insert(programsTable).values(externalData);  // SQL injection risk
+}
+
+// ✅ SECURE: Sanitize external API data before database insert
+import { z } from 'zod';
+
+const ProgramSchema = z.object({
+  name: z.string().min(1).max(200),                      // Length validation
+  price: z.number().nonnegative(),                       // No negative prices
+  startDate: z.string().datetime().transform(d => new Date(d)),  // Normalize to UTC
+  email: z.string().email().toLowerCase(),                // Normalize email
+  phone: z.string().regex(/^\+?[1-9]\d{1,14}$/),         // E.164 phone format
+  url: z.string().url().optional()                        // Validate URL format
+});
+
+async function importPrograms(externalData: unknown[]) {
+  const sanitizedData = externalData.map(item => {
+    // Validate and sanitize each item
+    const validated = ProgramSchema.parse(item);
+
+    // Strip invalid characters from string fields
+    return {
+      ...validated,
+      name: validated.name.replace(/[<>]/g, ''),  // Remove HTML brackets
+      description: validated.description?.replace(/[^\w\s.,!?-]/g, '')  // Keep only safe chars
+    };
+  });
+
+  await db.insert(programsTable).values(sanitizedData);
+}
+```
+
+**Key Principles**:
+- Sanitize external API data before database insert (use Zod schemas)
+- Normalize dates/times to UTC (avoid timezone bugs)
+- Validate numeric fields are non-negative (prevent negative prices, ages)
+- Strip invalid characters from user inputs (HTML tags, SQL injection patterns)
+- Use type-safe schemas to prevent type confusion attacks
