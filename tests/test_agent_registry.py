@@ -156,6 +156,67 @@ class TestAgentCategories:
                 f"without skills: {[str(a.path) for a in without_skills[:5]]}"
             )
 
+    def test_ops_agents_in_ops_directory(self, all_agents: list[AgentDefinition]):
+        """Test that agents with type 'ops' are in the ops/ directory.
+
+        This ensures proper BASE-AGENT.md inheritance for ops-specific instructions.
+        """
+        if not all_agents:
+            pytest.skip("No agents found")
+
+        misplaced = []
+        for agent in all_agents:
+            if agent.agent_type == "ops":
+                # Check if agent is in ops directory
+                parts = agent.path.parts
+                if "ops" not in parts:
+                    misplaced.append((agent.path, agent.agent_type))
+
+        assert not misplaced, (
+            f"Ops agents not in ops/ directory (missing ops/BASE-AGENT.md inheritance): "
+            f"{[(str(p), t) for p, t in misplaced]}"
+        )
+
+    def test_engineer_agents_in_engineer_directory(self, all_agents: list[AgentDefinition]):
+        """Test that agents with type 'engineer' are in the engineer/ directory.
+
+        This ensures proper BASE-AGENT.md inheritance for engineer-specific instructions.
+        """
+        if not all_agents:
+            pytest.skip("No agents found")
+
+        misplaced = []
+        for agent in all_agents:
+            if agent.agent_type == "engineer":
+                parts = agent.path.parts
+                if "engineer" not in parts:
+                    misplaced.append((agent.path, agent.agent_type))
+
+        assert not misplaced, (
+            f"Engineer agents not in engineer/ directory (missing engineer/BASE-AGENT.md inheritance): "
+            f"{[(str(p), t) for p, t in misplaced]}"
+        )
+
+    def test_qa_agents_in_qa_directory(self, all_agents: list[AgentDefinition]):
+        """Test that agents with type 'qa' are in the qa/ directory.
+
+        This ensures proper BASE-AGENT.md inheritance for qa-specific instructions.
+        """
+        if not all_agents:
+            pytest.skip("No agents found")
+
+        misplaced = []
+        for agent in all_agents:
+            if agent.agent_type == "qa":
+                parts = agent.path.parts
+                if "qa" not in parts:
+                    misplaced.append((agent.path, agent.agent_type))
+
+        assert not misplaced, (
+            f"QA agents not in qa/ directory (missing qa/BASE-AGENT.md inheritance): "
+            f"{[(str(p), t) for p, t in misplaced]}"
+        )
+
 
 @pytest.mark.registry
 class TestAgentContent:
