@@ -4,7 +4,7 @@ import pytest
 from deepeval import assert_test
 from deepeval.test_case import LLMTestCase
 
-from tests.fixtures.instruction_extractor import TestableRule
+from tests.fixtures.instruction_extractor import ExtractedRule
 from tests.fixtures.mock_responses import MockResponseGenerator
 from tests.metrics.instruction_compliance import (
     GitWorkflowComplianceMetric,
@@ -20,7 +20,7 @@ class TestRootBaseAgentCompliance:
     def test_engineer_compliant_response_passes(
         self,
         mock_generator: MockResponseGenerator,
-        root_base_rules: list[TestableRule],
+        root_base_rules: list[ExtractedRule],
     ):
         """Test that a compliant engineer response passes all checks."""
         # Generate compliant response
@@ -41,7 +41,7 @@ class TestRootBaseAgentCompliance:
     def test_engineer_non_compliant_response_fails(
         self,
         mock_generator: MockResponseGenerator,
-        root_base_rules: list[TestableRule],
+        root_base_rules: list[ExtractedRule],
     ):
         """Test that a non-compliant response is detected."""
         # Generate non-compliant response

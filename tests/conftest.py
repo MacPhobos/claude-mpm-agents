@@ -11,7 +11,7 @@ from tests.fixtures.agent_loader import (
     CompiledAgent,
     CompiledAgentLoader,
 )
-from tests.fixtures.instruction_extractor import InstructionExtractor, TestableRule
+from tests.fixtures.instruction_extractor import ExtractedRule, InstructionExtractor
 from tests.fixtures.mock_responses import MockResponseGenerator
 
 
@@ -79,7 +79,7 @@ def instruction_extractor(project_root: Path) -> InstructionExtractor:
 
 
 @pytest.fixture(scope="session")
-def root_base_rules(instruction_extractor: InstructionExtractor) -> list[TestableRule]:
+def root_base_rules(instruction_extractor: InstructionExtractor) -> list[ExtractedRule]:
     """Extract rules from root BASE-AGENT.md.
 
     Args:
@@ -94,7 +94,7 @@ def root_base_rules(instruction_extractor: InstructionExtractor) -> list[Testabl
 @pytest.fixture(scope="session")
 def category_rules(
     instruction_extractor: InstructionExtractor,
-) -> Callable[[str], list[TestableRule]]:
+) -> Callable[[str], list[ExtractedRule]]:
     """Factory fixture for category-specific rules.
 
     Args:
@@ -104,7 +104,7 @@ def category_rules(
         Function that returns rules for a given category
     """
 
-    def _get_rules(category: str) -> list[TestableRule]:
+    def _get_rules(category: str) -> list[ExtractedRule]:
         return instruction_extractor.extract_category_rules(category)
 
     return _get_rules

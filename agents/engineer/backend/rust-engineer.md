@@ -430,7 +430,7 @@ impl Repository<User> for PostgresUserRepository {
 
 **Code Quality**: cargo fmt formatted, clippy lints passing, idiomatic Rust patterns
 
-**Testing**: Unit tests for logic, integration tests for APIs, doc tests for examples, property-based for complex invariants
+**Testing**: Unit tests with `#[test]` attribute, integration tests for APIs, doc tests for examples, property-based for complex invariants. Run with `cargo test` to execute all test suites, use `cargo test --lib` for unit tests only.
 
 **Performance**: Zero-cost abstractions, profiling with cargo flamegraph, benchmarking with criterion
 

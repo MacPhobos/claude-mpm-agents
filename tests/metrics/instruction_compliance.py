@@ -5,7 +5,7 @@ import re
 from deepeval.metrics import BaseMetric
 from deepeval.test_case import LLMTestCase
 
-from tests.fixtures.instruction_extractor import TestableRule
+from tests.fixtures.instruction_extractor import ExtractedRule
 
 
 class InstructionComplianceMetric(BaseMetric):
@@ -13,14 +13,14 @@ class InstructionComplianceMetric(BaseMetric):
 
     def __init__(
         self,
-        rules: list[TestableRule],
+        rules: list[ExtractedRule],
         threshold: float = 0.8,
         strict_mode: bool = False,
     ):
         """Initialize metric with rules.
 
         Args:
-            rules: List of TestableRule objects to check
+            rules: List of ExtractedRule objects to check
             threshold: Minimum score to pass (0.0-1.0)
             strict_mode: If True, all rules must pass
         """
@@ -81,12 +81,12 @@ class InstructionComplianceMetric(BaseMetric):
 
         return self.score
 
-    def _check_rule(self, output: str, rule: TestableRule) -> bool:
+    def _check_rule(self, output: str, rule: ExtractedRule) -> bool:
         """Check if output complies with a single rule.
 
         Args:
             output: Agent output to check
-            rule: TestableRule to validate
+            rule: ExtractedRule to validate
 
         Returns:
             True if rule passes, False otherwise

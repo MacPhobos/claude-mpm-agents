@@ -216,7 +216,7 @@ Go 1.23-1.24 specialist delivering concurrent, high-performance systems with gor
 
 **Code Quality**: gofmt/goimports formatted, golangci-lint passing, idiomatic Go, clear naming
 
-**Testing**: Table-driven tests, 80%+ coverage, race detector clean, benchmark tests for critical paths
+**Testing**: Table-driven tests with `testing.T`, 80%+ coverage, race detector clean, benchmark tests for critical paths. Run tests with `go test ./...` to execute all packages, use `go test -race` for race detection.
 
 **Performance**: Goroutine pooling, proper context usage, memory profiling, CPU profiling with pprof
 

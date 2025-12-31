@@ -6,8 +6,11 @@ from typing import Literal
 
 
 @dataclass
-class TestableRule:
-    """Represents a testable rule extracted from BASE-AGENT.md."""
+class ExtractedRule:
+    """Represents a testable rule extracted from BASE-AGENT.md.
+
+    Note: Renamed from TestableRule to avoid pytest collection warning.
+    """
 
     rule_id: str
     category: str
@@ -30,11 +33,11 @@ class InstructionExtractor:
         self.project_root = Path(project_root)
         self.agents_dir = self.project_root / "agents"
 
-    def extract_root_rules(self) -> list[TestableRule]:
+    def extract_root_rules(self) -> list[ExtractedRule]:
         """Extract rules from root BASE-AGENT.md.
 
         Returns:
-            List of TestableRule objects from root-level instructions
+            List of ExtractedRule objects from root-level instructions
         """
         root_base = self.project_root / "agents" / "BASE-AGENT.md"
         if not root_base.exists():
@@ -44,7 +47,7 @@ class InstructionExtractor:
 
         # Git conventional commits
         rules.append(
-            TestableRule(
+            ExtractedRule(
                 rule_id="git_conventional_commits",
                 category="git_workflow",
                 description="Commit messages must follow conventional commits format",
@@ -62,7 +65,7 @@ class InstructionExtractor:
 
         # Markdown output format
         rules.append(
-            TestableRule(
+            ExtractedRule(
                 rule_id="markdown_output",
                 category="output_format",
                 description="Responses must use markdown formatting with headers",
@@ -82,7 +85,7 @@ class InstructionExtractor:
 
         # Search before implement
         rules.append(
-            TestableRule(
+            ExtractedRule(
                 rule_id="search_before_implement",
                 category="code_quality",
                 description="Must search for existing implementations before creating new code",
@@ -98,14 +101,14 @@ class InstructionExtractor:
 
         return rules
 
-    def extract_category_rules(self, category: str) -> list[TestableRule]:
+    def extract_category_rules(self, category: str) -> list[ExtractedRule]:
         """Extract rules from category-specific BASE-AGENT.md.
 
         Args:
             category: Category name (e.g., 'engineer', 'qa', 'ops')
 
         Returns:
-            List of TestableRule objects for the category
+            List of ExtractedRule objects for the category
         """
         category_base = self.agents_dir / category / "BASE-AGENT.md"
         if not category_base.exists():
@@ -116,7 +119,7 @@ class InstructionExtractor:
         if category == "engineer":
             # Type safety
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="engineer_type_safety",
                     category="engineer",
                     description="Engineer responses must emphasize type safety",
@@ -134,7 +137,7 @@ class InstructionExtractor:
 
             # File size limit
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="engineer_file_size_limit",
                     category="engineer",
                     description="Files must be under 800 lines",
@@ -150,7 +153,7 @@ class InstructionExtractor:
         elif category == "qa":
             # Bug report format
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="qa_bug_report_format",
                     category="qa",
                     description="Bug reports must include steps to reproduce, expected, actual",
@@ -167,7 +170,7 @@ class InstructionExtractor:
 
             # CI-safe tests
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="qa_ci_safe_tests",
                     category="qa",
                     description="Test commands must be CI-safe",
@@ -186,7 +189,7 @@ class InstructionExtractor:
         elif category == "ops":
             # Deployment verification
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="ops_deployment_verification",
                     category="ops",
                     description="Deployments must include verification steps",
@@ -202,7 +205,7 @@ class InstructionExtractor:
 
             # Security scan
             rules.append(
-                TestableRule(
+                ExtractedRule(
                     rule_id="ops_security_scan",
                     category="ops",
                     description="Must include security scanning in deployment",

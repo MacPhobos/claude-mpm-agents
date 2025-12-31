@@ -88,6 +88,7 @@ template_changelog:
 - ExUnit with DataCase/ConnCase/LiveViewCase; isolate DB writes with SQL sandbox; seed only what tests need.
 - Use factories (e.g., `ExMachina` or custom helpers) and property tests for critical transformations.
 - Add integration tests for LiveView flows (mount, render, event handling) and controller happy-path + edge cases.
+- Write tests using Elixir patterns: define test modules with `defmodule MyAppTest do`, use `test "description" do` blocks, and structure with `def setup` for test fixtures.
 
 ## Deployment Notes
 - Keep runtime config in environment; avoid compile-time app env for secrets.
