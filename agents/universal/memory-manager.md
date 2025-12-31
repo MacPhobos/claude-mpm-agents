@@ -1,9 +1,9 @@
 ---
-name: Memory Manager
+name: Memory Manager (Legacy)
 description: Manages project-specific agent memories for improved context retention and knowledge accumulation
 version: 1.1.2
 schema_version: 1.2.0
-agent_id: memory-manager-agent
+agent_id: memory-manager-legacy
 agent_type: memory_manager
 resource_tier: lightweight
 tags:
