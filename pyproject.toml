@@ -37,6 +37,9 @@ markers = [
     "registry: Tests for agent registry validation",
     "compiled: Tests for compiled agent validation",
     "base_agent: Tests for BASE-AGENT.md files directly",
+    "patterns: Tests for agent-specific domain patterns",
+    "skills: Tests for agent skill validation",
+    "knowledge: Tests for agent knowledge and expertise validation",
 ]
 
 [tool.ruff]

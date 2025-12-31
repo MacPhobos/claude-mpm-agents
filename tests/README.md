@@ -346,8 +346,83 @@ Ensure you've installed test dependencies:
 pip install -e ".[test]"
 ```
 
+## Agent Validation Tests (Static Analysis)
+
+In addition to DeepEval behavior tests, we have comprehensive static validation tests that check agent structure and metadata.
+
+### New Validation Categories
+
+1. **Domain Pattern Tests** (`test_agent_patterns.py`) - 32 tests
+   - Verifies agents contain terminology specific to their domain
+   - Example: `python-engineer` should mention `pytest`, `mypy`, `async`
+   - Validates testing tool mentions, deployment platforms, quality metrics
+
+2. **Skills Validation Tests** (`test_agent_skills.py`) - 10 tests
+   - Ensures all skill references exist in skills registry
+   - Validates agents have appropriate skills for their category
+   - Checks skill naming conventions and counts
+
+3. **Knowledge & Interactions Tests** (`test_agent_knowledge.py`) - 14 tests
+   - Validates knowledge structure (domain_expertise, best_practices)
+   - Checks interaction patterns (handoff_to, collaboration)
+   - Ensures knowledge is actionable and specific
+
+### Running Validation Tests
+
+```bash
+# Run all validation tests
+pytest tests/test_agent_patterns.py tests/test_agent_skills.py tests/test_agent_knowledge.py -v
+
+# Run by category
+pytest -m patterns -v      # Domain patterns
+pytest -m skills -v        # Skills validation
+pytest -m knowledge -v     # Knowledge validation
+
+# Run specific test
+pytest tests/test_agent_patterns.py::test_engineer_agents_mention_testing_tools -v
+```
+
+### Current Validation Status
+
+**Overall:** 50/56 tests passing (89.3%)
+
+| Category | Tests | Passed | Failed | Pass Rate |
+|----------|-------|--------|--------|-----------|
+| Domain Patterns | 32 | 30 | 2 | 93.8% |
+| Skills | 10 | 9 | 1 | 90.0% |
+| Knowledge | 14 | 11 | 3 | 78.6% |
+
+See [VALIDATION_REPORT.md](./VALIDATION_REPORT.md) for detailed failure analysis.
+
+### Test Markers
+
+New markers added to `pyproject.toml`:
+
+- `@pytest.mark.patterns` - Domain pattern tests
+- `@pytest.mark.skills` - Skills validation tests
+- `@pytest.mark.knowledge` - Knowledge and expertise tests
+
+### Example Validation Test
+
+```python
+@pytest.mark.patterns
+@pytest.mark.parametrize("agent_id,patterns", AGENT_PATTERNS.items())
+def test_agent_has_domain_patterns(compiled_agents, agent_id, patterns):
+    """Test each agent contains its expected domain-specific patterns."""
+    agent = compiled_agents[agent_id]
+    content = agent.compiled_content
+
+    missing = []
+    for pattern in patterns:
+        if not re.search(pattern, content, re.IGNORECASE):
+            missing.append(pattern)
+
+    assert not missing, f"{agent_id} missing patterns: {missing}"
+```
+
 ## Resources
 
 - [DeepEval Documentation](https://docs.confident-ai.com/)
 - [Pytest Documentation](https://docs.pytest.org/)
 - [Project BASE-AGENT.md](../agents/BASE-AGENT.md)
+- [Validation Report](./VALIDATION_REPORT.md) - Detailed validation test results
