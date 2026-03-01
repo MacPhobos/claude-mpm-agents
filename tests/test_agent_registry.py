@@ -30,7 +30,7 @@ class TestAgentFrontmatter:
                 missing.append(agent.path)
 
         assert not missing, (
-            f"Agents missing required field '{field_name}': " f"{[str(p) for p in missing]}"
+            f"Agents missing required field '{field_name}': {[str(p) for p in missing]}"
         )
 
     def test_agent_ids_unique(self, all_agents: list[AgentDefinition]):
@@ -84,7 +84,7 @@ class TestAgentFrontmatter:
             if agent.agent_type and agent.agent_type not in valid_types
         ]
 
-        assert not invalid, f"Agents with invalid types: " f"{[(str(p), t) for p, t in invalid]}"
+        assert not invalid, f"Agents with invalid types: {[(str(p), t) for p, t in invalid]}"
 
     def test_handoff_agents_exist(self, all_agents: list[AgentDefinition]):
         """Test that handoff references point to existing agents."""
@@ -125,7 +125,7 @@ class TestAgentCategories:
         wrong_type = [agent for agent in engineer_agents if agent.agent_type != "engineer"]
 
         assert not wrong_type, (
-            f"Engineer agents with wrong type: " f"{[(a.path, a.agent_type) for a in wrong_type]}"
+            f"Engineer agents with wrong type: {[(a.path, a.agent_type) for a in wrong_type]}"
         )
 
     def test_qa_agents_have_qa_type(self, qa_agents: list[AgentDefinition]):
@@ -136,7 +136,7 @@ class TestAgentCategories:
         wrong_type = [agent for agent in qa_agents if agent.agent_type != "qa"]
 
         assert not wrong_type, (
-            f"QA agents with wrong type: " f"{[(a.path, a.agent_type) for a in wrong_type]}"
+            f"QA agents with wrong type: {[(a.path, a.agent_type) for a in wrong_type]}"
         )
 
     def test_all_agents_have_skills(self, all_agents: list[AgentDefinition]):
@@ -234,7 +234,7 @@ class TestAgentContent:
         ]
 
         assert not empty_content, (
-            f"Agents with insufficient content: " f"{[str(a.path) for a in empty_content]}"
+            f"Agents with insufficient content: {[str(a.path) for a in empty_content]}"
         )
 
     def test_agents_reference_base_agent(self, all_agents: list[AgentDefinition]):
