@@ -1,5 +1,7 @@
 """Tests for agent registry validation."""
 
+import re
+
 import pytest
 
 from tests.fixtures.agent_loader import AgentDefinition
@@ -110,6 +112,41 @@ class TestAgentFrontmatter:
         assert not missing_refs, (
             f"Agents reference non-existent handoff targets: "
             f"{[(str(p), t) for p, t in missing_refs]}"
+        )
+
+    def test_agent_id_naming_convention(self, all_agents: list[AgentDefinition]):
+        """Test that all agent_ids use kebab-case without -agent suffix.
+
+        Convention: agent_id must be lowercase alphanumeric segments separated
+        by hyphens. No underscores, no -agent suffix.
+        See AGENT_TEMPLATE_REFERENCE.md for the naming standard.
+        """
+        if not all_agents:
+            pytest.skip("No agents found")
+
+        NAMING_EXCEPTIONS: set[str] = set()  # Add agent_ids here if documented reason to deviate
+
+        violations = []
+        for agent in all_agents:
+            if not agent.agent_id or agent.agent_id in NAMING_EXCEPTIONS:
+                continue
+
+            aid = agent.agent_id
+
+            # Must be kebab-case: lowercase alphanumeric segments separated by hyphens
+            if not re.match(r"^[a-z][a-z0-9]*(-[a-z0-9]+)*$", aid):
+                violations.append((str(agent.path), aid, "not valid kebab-case"))
+
+            # Must not end with -agent (redundant suffix)
+            if aid.endswith("-agent"):
+                violations.append((str(agent.path), aid, "has redundant -agent suffix"))
+
+            # Must not contain underscores
+            if "_" in aid:
+                violations.append((str(agent.path), aid, "contains underscores (use hyphens)"))
+
+        assert not violations, "Agent ID naming convention violations:\n" + "\n".join(
+            f"  {path}: {aid} ({reason})" for path, aid, reason in violations
         )
 
 
