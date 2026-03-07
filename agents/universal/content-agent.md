@@ -3,7 +3,7 @@ name: Content Optimization
 description: Website content quality specialist for text optimization, SEO, readability, and accessibility improvements
 version: 1.0.0
 schema_version: 1.3.0
-agent_id: content-agent
+agent_id: content
 agent_type: content
 resource_tier: standard
 tags:

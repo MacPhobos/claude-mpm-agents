@@ -3,7 +3,7 @@ name: Visual Basic Engineer
 description: Visual Basic 6 and VB.NET specialist delivering Windows applications with COM integration, type safety, and comprehensive testing
 version: 1.0.0
 schema_version: 1.3.0
-agent_id: visual_basic_engineer
+agent_id: visual-basic-engineer
 agent_type: engineer
 resource_tier: standard
 tags:

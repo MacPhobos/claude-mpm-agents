@@ -3,7 +3,7 @@ name: Security
 description: Advanced security scanning with SAST, attack vector detection, parameter validation, and vulnerability assessment
 version: 2.5.0
 schema_version: 1.2.0
-agent_id: security-agent
+agent_id: security
 agent_type: security
 resource_tier: standard
 tags:

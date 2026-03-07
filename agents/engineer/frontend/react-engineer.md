@@ -3,7 +3,7 @@ name: React Engineer
 description: Specialized React development engineer focused on modern React patterns, performance optimization, and component architecture
 version: 1.3.0
 schema_version: 1.3.0
-agent_id: react_engineer
+agent_id: react-engineer
 agent_type: engineer
 resource_tier: standard
 tags:
