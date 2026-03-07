@@ -113,7 +113,7 @@ interactions:
     - routing_structure
     - testing_strategy
   handoff_agents:
-  - typescript_engineer
+  - typescript-engineer
   - web-qa
   triggers:
   - svelte development

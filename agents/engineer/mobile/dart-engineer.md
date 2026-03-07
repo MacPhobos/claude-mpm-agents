@@ -128,8 +128,8 @@ interactions:
   handoff_agents:
   - engineer
   - qa
-  - ui_designer
-  - mobile_ops
+  - ui-designer
+  - mobile-ops
   triggers:
   - dart development
   - flutter development

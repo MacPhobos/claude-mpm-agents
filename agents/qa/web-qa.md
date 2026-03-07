@@ -183,7 +183,7 @@ interactions:
     - performance_metrics
     - screenshots
   handoff_agents:
-  - web-ui
+  - web-ui-engineer
   - engineer
   - security
   triggers:

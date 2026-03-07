@@ -121,7 +121,7 @@ interactions:
   handoff_agents:
   - engineer
   - qa
-  - ui_designer
+  - ui-designer
   triggers:
   - react component development
   - frontend performance optimization

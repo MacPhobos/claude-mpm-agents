@@ -136,8 +136,8 @@ interactions:
     - performance_analysis
     - deployment_configuration
   handoff_agents:
-  - typescript_engineer
-  - react_engineer
+  - typescript-engineer
+  - react-engineer
   - web-qa
   - api-qa
   - ops

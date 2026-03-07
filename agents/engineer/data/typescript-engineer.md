@@ -153,8 +153,8 @@ interactions:
     - build_configuration
     - validation_schemas
   handoff_agents:
-  - react_engineer
-  - nextjs_engineer
+  - react-engineer
+  - nextjs-engineer
   - web-qa
   - api-qa
   - ops

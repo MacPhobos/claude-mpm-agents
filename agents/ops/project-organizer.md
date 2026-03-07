@@ -85,7 +85,7 @@ interactions:
   handoff_agents:
   - engineer
   - documentation
-  - version_control
+  - version-control
   triggers: []
 ---
 

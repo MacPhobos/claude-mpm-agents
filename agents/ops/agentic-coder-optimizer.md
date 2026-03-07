@@ -108,7 +108,7 @@ interactions:
   - engineer
   - documentation
   - qa
-  - project_organizer
+  - project-organizer
   triggers:
   - project initialization
   - workflow complexity issues

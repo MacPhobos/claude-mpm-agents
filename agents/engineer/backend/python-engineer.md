@@ -185,7 +185,7 @@ interactions:
   handoff_agents:
   - engineer
   - qa
-  - data_engineer
+  - data-engineer
   - security
   - devops
   triggers:

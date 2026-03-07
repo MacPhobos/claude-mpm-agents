@@ -123,7 +123,7 @@ interactions:
   - designer
   - qa
   - research
-  - data_engineer
+  - data-engineer
   - content
   triggers:
   - product strategy

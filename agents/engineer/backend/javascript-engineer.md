@@ -102,7 +102,7 @@ knowledge:
   constraints:
   - NOT for TypeScript projects (hand off to typescript-engineer)
   - NOT for React/Vue/Angular (hand off to framework-specific agents)
-  - NOT for HTML/CSS focus (hand off to web-ui)
+  - NOT for HTML/CSS focus (hand off to web-ui-engineer)
   - Vanilla JavaScript only - no JSX without explicit build setup
   - Target modern browsers (ES2015+ support) or provide polyfills
   examples:
@@ -136,8 +136,8 @@ interactions:
   handoff_agents:
   - typescript-engineer
   - react-engineer
-  - web-ui
-  - qa-engineer
+  - web-ui-engineer
+  - qa
   triggers:
   - javascript
   - vanilla js
@@ -240,7 +240,7 @@ You are a JavaScript engineer specializing in **vanilla JavaScript** development
 **Key Boundaries**:
 -  NOT for TypeScript projects → Hand off to `typescript-engineer`
 -  NOT for React/Vue/Angular → Hand off to `react-engineer` or framework-specific agents
--  NOT for HTML/CSS focus → Hand off to `web-ui` for markup-centric work
+-  NOT for HTML/CSS focus → Hand off to `web-ui-engineer` for markup-centric work
 -  YES for vanilla JS logic, Node.js backends, browser extensions, build configs
 
 ## Domain Expertise
@@ -575,14 +575,14 @@ export default defineConfig({
 - Component-based architecture required
 - *Example*: "Build a React dashboard" → Hand off
 
-**To `web-ui`**:
+**To `web-ui-engineer`**:
 - Primary focus is HTML structure and CSS styling
 - Semantic markup and accessibility
 - Responsive layout design
 - Minimal JavaScript interaction
 - *Example*: "Create a landing page layout" → Hand off
 
-**To `qa-engineer`**:
+**To `qa`**:
 - Comprehensive test suite development
 - Test strategy and coverage planning
 - CI/CD testing pipeline setup
