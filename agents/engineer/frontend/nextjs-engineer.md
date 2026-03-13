@@ -136,11 +136,11 @@ interactions:
     - performance_analysis
     - deployment_configuration
   handoff_agents:
-  - typescript_engineer
+  - typescript-engineer
   - react_engineer
-  - web-qa
-  - api-qa
-  - ops
+  - web-qa-agent
+  - api-qa-agent
+  - ops-agent
   triggers:
   - nextjs development
   - app router

@@ -138,10 +138,8 @@ interactions:
     - deployment_considerations
   handoff_agents:
   - engineer
-  - qa
-  - devops
-  - security
-  - pm
+  - qa-agent
+  - security-agent
   triggers:
   - java development
   - spring boot

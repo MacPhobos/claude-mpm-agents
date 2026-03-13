@@ -128,8 +128,8 @@ interactions:
   handoff_agents:
   - imagemagick
   - engineer
-  - documentation
-  - qa
+  - documentation-agent
+  - qa-agent
   triggers:
   - pattern: content.*optimi[zs]ation
     confidence: 0.9

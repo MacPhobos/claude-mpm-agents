@@ -120,11 +120,9 @@ interactions:
     - next_steps
   handoff_agents:
   - engineer
-  - designer
-  - qa
-  - research
-  - data_engineer
-  - content
+  - qa-agent
+  - research-agent
+  - data-engineer
   triggers:
   - product strategy
   - feature prioritization

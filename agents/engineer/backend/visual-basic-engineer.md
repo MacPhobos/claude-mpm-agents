@@ -65,8 +65,7 @@ knowledge:
 interactions:
   handoff_agents:
   - engineer
-  - qa
-  - pm
+  - qa-agent
   triggers:
   - visual basic
   - vb6

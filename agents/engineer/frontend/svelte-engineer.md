@@ -113,8 +113,8 @@ interactions:
     - routing_structure
     - testing_strategy
   handoff_agents:
-  - typescript_engineer
-  - web-qa
+  - typescript-engineer
+  - web-qa-agent
   triggers:
   - svelte development
   - sveltekit

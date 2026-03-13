@@ -121,11 +121,9 @@ interactions:
     - performance_analysis
     - safety_justification
   handoff_agents:
-  - qa
-  - ops
-  - security
-  - performance
-  - infrastructure
+  - qa-agent
+  - ops-agent
+  - security-agent
   triggers:
   - rust development
   - rust

@@ -120,8 +120,7 @@ interactions:
     - testing_strategy
   handoff_agents:
   - engineer
-  - qa
-  - ui_designer
+  - qa-agent
   triggers:
   - react component development
   - frontend performance optimization

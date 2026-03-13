@@ -183,9 +183,9 @@ interactions:
     - performance_metrics
     - screenshots
   handoff_agents:
-  - web-ui
+  - web-ui-engineer
   - engineer
-  - security
+  - security-agent
   triggers:
   - deployment_ready
   - ui_components_ready

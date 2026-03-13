@@ -120,11 +120,9 @@ interactions:
     - performance_analysis
     - project_structure
   handoff_agents:
-  - qa
-  - ops
-  - database
-  - security
-  - infrastructure
+  - qa-agent
+  - ops-agent
+  - security-agent
   triggers:
   - golang development
   - go

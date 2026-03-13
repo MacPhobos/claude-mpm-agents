@@ -90,8 +90,8 @@ interactions:
     - accessibility_notes
     - browser_compatibility
   handoff_agents:
-  - qa
-  - documentation
+  - qa-agent
+  - documentation-agent
   - engineer
   triggers: []
 ---

@@ -115,8 +115,8 @@ interactions:
     - next_steps
   handoff_agents:
   - engineer
-  - ops
-  - qa
+  - ops-agent
+  - qa-agent
   triggers:
   - pattern: optimize.*image
     confidence: 0.9

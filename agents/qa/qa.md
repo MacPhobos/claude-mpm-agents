@@ -118,7 +118,7 @@ interactions:
     - code
   handoff_agents:
   - engineer
-  - security
+  - security-agent
   triggers: []
 memory_routing:
   description: Stores testing strategies, quality standards, and bug patterns

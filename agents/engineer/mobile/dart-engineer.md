@@ -127,9 +127,7 @@ interactions:
     - deployment_considerations
   handoff_agents:
   - engineer
-  - qa
-  - ui_designer
-  - mobile_ops
+  - qa-agent
   triggers:
   - dart development
   - flutter development

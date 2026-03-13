@@ -155,9 +155,9 @@ interactions:
   handoff_agents:
   - react_engineer
   - nextjs_engineer
-  - web-qa
-  - api-qa
-  - ops
+  - web-qa-agent
+  - api-qa-agent
+  - ops-agent
   triggers:
   - typescript development
   - type safety

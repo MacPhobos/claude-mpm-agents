@@ -122,7 +122,7 @@ interactions:
     - recommendations
     - code
   handoff_agents:
-  - version_control
+  - version-control
   triggers: []
 memory_routing:
   description: Stores writing standards, content organization patterns, documentation conventions, and semantic search patterns

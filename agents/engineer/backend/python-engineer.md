@@ -184,10 +184,9 @@ interactions:
     - deployment_considerations
   handoff_agents:
   - engineer
-  - qa
-  - data_engineer
-  - security
-  - devops
+  - qa-agent
+  - data-engineer
+  - security-agent
   triggers:
   - python development
   - performance optimization

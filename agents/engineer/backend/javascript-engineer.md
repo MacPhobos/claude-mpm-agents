@@ -135,9 +135,8 @@ interactions:
     - performance_analysis
   handoff_agents:
   - typescript-engineer
-  - react-engineer
-  - web-ui
-  - qa-engineer
+  - react_engineer
+  - web-ui-engineer
   triggers:
   - javascript
   - vanilla js

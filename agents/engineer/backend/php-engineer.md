@@ -128,11 +128,9 @@ interactions:
     - performance_optimization
     - deployment_configuration
   handoff_agents:
-  - qa
-  - security
-  - ops
-  - database
-  - frontend
+  - qa-agent
+  - security-agent
+  - ops-agent
   triggers:
   - php development
   - laravel

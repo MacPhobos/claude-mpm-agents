@@ -117,11 +117,9 @@ interactions:
     - migration_files
     - query_optimization
   handoff_agents:
-  - qa
-  - frontend
-  - ops
-  - database
-  - security
+  - qa-agent
+  - ops-agent
+  - security-agent
   triggers:
   - ruby development
   - rails

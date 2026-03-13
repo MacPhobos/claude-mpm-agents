@@ -74,8 +74,7 @@ interactions:
     - changes_made
     - recommendations
   handoff_agents:
-  - research
-  - pm
+  - research-agent
   triggers:
   - memory_update
   - token_limit_warning

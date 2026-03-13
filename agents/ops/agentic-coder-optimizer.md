@@ -106,9 +106,9 @@ interactions:
     - validation_criteria
   handoff_agents:
   - engineer
-  - documentation
-  - qa
-  - project_organizer
+  - documentation-agent
+  - qa-agent
+  - project-organizer
   triggers:
   - project initialization
   - workflow complexity issues
