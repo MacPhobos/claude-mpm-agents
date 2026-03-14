@@ -140,7 +140,7 @@ interactions:
   - engineer
   - qa
   - security
-    triggers:
+  triggers:
   - java development
   - spring boot
   - maven

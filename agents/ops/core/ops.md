@@ -98,7 +98,7 @@ interactions:
     - code
   handoff_agents:
   - engineer
-  - security-agent
+  - security
   triggers: []
 memory_routing:
   description: Stores deployment patterns, infrastructure configurations, and monitoring strategies

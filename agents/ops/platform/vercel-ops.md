@@ -200,9 +200,9 @@ interactions:
     - recommendations
   handoff_agents:
   - engineer
-  - qa-agent
-  - security-agent
-  - documentation-agent
+  - qa
+  - security
+  - documentation
   triggers:
   - deployment_ready
   - feature_complete

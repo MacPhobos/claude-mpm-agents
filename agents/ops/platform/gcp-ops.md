@@ -109,8 +109,8 @@ interactions:
     - cost_estimates
   handoff_agents:
   - engineer
-  - security-agent
-  - ops-agent
+  - security
+  - ops
   triggers:
   - gcp authentication setup
   - google cloud deployment

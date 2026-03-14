@@ -140,9 +140,9 @@ interactions:
       - rollback_strategy
   handoff_agents:
     - engineer
-    - qa-agent
-    - security-agent
-    - documentation-agent
+    - qa
+    - security
+    - documentation
   triggers:
     - digitalocean setup
     - droplet provisioning
