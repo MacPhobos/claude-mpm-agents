@@ -128,7 +128,6 @@ interactions:
   handoff_agents:
   - engineer
   - qa
-  # Aspirational handoff targets (add when agents are created): ui-designer, mobile-ops
   triggers:
   - dart development
   - flutter development

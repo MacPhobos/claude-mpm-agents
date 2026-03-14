@@ -94,8 +94,8 @@ interactions:
     - findings
   handoff_agents:
   - engineer
-  - security
-  - ops
+  - security-agent
+  - ops-agent
   triggers:
   - api_implementation_complete
   - endpoint_added

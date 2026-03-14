@@ -66,7 +66,6 @@ interactions:
   handoff_agents:
   - engineer
   - qa
-  - product-owner
   triggers:
   - visual basic
   - vb6

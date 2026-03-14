@@ -111,11 +111,11 @@ interactions:
     - ipc_patterns
     - testing_strategy
   handoff_agents:
-  - rust-engineer
-  - react-engineer
+  - rust_engineer
+  - react_engineer
   - typescript-engineer
-  - qa
-  - security
+  - qa-agent
+  - security-agent
   triggers:
   - tauri
   - desktop app

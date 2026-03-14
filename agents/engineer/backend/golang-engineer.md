@@ -123,7 +123,6 @@ interactions:
   - qa
   - ops
   - security
-  # Aspirational handoff targets (add when agents are created): database, infrastructure
   triggers:
   - golang development
   - go

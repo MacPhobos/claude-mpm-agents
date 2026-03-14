@@ -185,7 +185,7 @@ interactions:
   handoff_agents:
   - web-ui-engineer
   - engineer
-  - security
+  - security-agent
   triggers:
   - deployment_ready
   - ui_components_ready

@@ -120,7 +120,6 @@ interactions:
   - qa
   - ops
   - security
-  # Aspirational handoff targets (add when agents are created): database, frontend
   triggers:
   - ruby development
   - rails

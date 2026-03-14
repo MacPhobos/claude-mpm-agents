@@ -123,8 +123,6 @@ interactions:
   - qa
   - research
   - data-engineer
-  - content
-  # Aspirational handoff targets (add when agents are created): designer
   triggers:
   - product strategy
   - feature prioritization

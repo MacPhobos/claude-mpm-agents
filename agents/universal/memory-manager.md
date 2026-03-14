@@ -75,7 +75,6 @@ interactions:
     - recommendations
   handoff_agents:
   - research
-  - product-owner
   triggers:
   - memory_update
   - token_limit_warning

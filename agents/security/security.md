@@ -94,7 +94,7 @@ interactions:
   - code
   handoff_agents:
   - engineer
-  - ops
+  - ops-agent
   triggers: []
 memory_routing:
   description: Stores security patterns, threat models, attack vectors, and compliance requirements
